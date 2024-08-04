@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # My Preferred Folders
-mkdir -p  ~/Documents ~/Videos ~/Coding/Projects
+mkdir -p  Documents Videos Coding/Projects
 
 # Update the system
 echo "Updating system..."
@@ -19,8 +19,9 @@ sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc
 
 # Clone and install yay
 git clone https://aur.archlinux.org/yay.git
-sudo mv yay ~/.config
-makepkg -si --noconfirm
+sudo mv yay $HOME/.config
+chmod +x yay.sh
+./yay.sh
 
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -65,8 +66,8 @@ unzip "$FONT_ZIP" -d JetBrainsMono
 
 # Step 3: Install the Font
 echo "Installing the font..."
-sudo mkdir -p ~/.local/share/fonts
-sudo mv JetBrainsMono/* ~/.local/share/fonts/
+sudo mkdir -p $HOME/.local/share/fonts
+sudo mv JetBrainsMono/* $HOME/.local/share/fonts/
 fc-cache -fv
 
 # Step 4: Verify the Installation
@@ -90,7 +91,7 @@ flatpak install flathub blanket -y
 
 # Wallpaper configuration
 
-sudo mv Pictures ~/
+sudo mv Pictures $HOME
 
 # Path to the wallpaper image
 WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
@@ -149,19 +150,19 @@ sudo pacman -S ripgrep
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-sudo mv mozilla ~/.config
-sudo mv waybar ~/.config
-sudo mv wofi ~/.config
-sudo mv ly ~/.config
-sudo mv neofetch ~/.config
-sudo mv Documents ~/
-sudo mv Videos ~/
-sudo mv Coding ~/
+sudo mv mozilla $HOME/.config
+sudo mv waybar $HOME/.config
+sudo mv wofi $HOME/.config
+sudo mv ly $HOME/.config
+sudo mv neofetch $HOME/.config
+sudo mv Documents $HOME
+sudo mv Videos $HOME
+sudo mv Coding $HOME
 
 # Clean up
 echo "Cleaning up..."
 sudo pacman -Sc --noconfirm
 rm -rf ~/ArchConfig/JetBrainsMono "$FONT_ZIP"
 
-echo "All done!"
+echo "All done! Now run util.sh and displaylinkinstall.sh and look at info.txt"
 
