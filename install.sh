@@ -6,7 +6,7 @@
 if [ "$EUID" -ne 0 ]; then
     # Clone and install yay
     git clone https://aur.archlinux.org/yay.git
-    mv yay $HOME/.config
+    mv yay $HOME/.config/
     cd $HOME/.config/yay
     makepkg -si --noconfirm
     echo "Please run as root"
@@ -14,7 +14,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # My Preferred Folders
-mkdir -p  "$HOME/Documents" $"HOME/Videos" "$HOME/Coding/Projects"
+mkdir -p  ~/Documents ~/Videos ~/Coding/Projects
 
 # Update the system
 echo "Updating system..."
@@ -151,14 +151,14 @@ sudo pacman -S --noconfirm ripgrep
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-mv mozilla "$HOME/.config"
-mv waybar "$HOME/.config"
-mv wofi "$HOME/.config"
-mv ly "$HOME/.config"
-mv neofetch "$HOME/.config"
-mv Documents "$HOME"
-mv Videos "$HOME"
-mv Coding "$HOME"
+mv firefox "$HOME/.config/"
+mv waybar "$HOME/.config/"
+mv wofi "$HOME/.config/"
+mv ly "$HOME/.config/"
+mv neofetch "$HOME/.config/"
+mv Documents "$HOME/"
+mv Videos "$HOME/"
+mv Coding "$HOME/"
 
 # Clean up
 echo "Cleaning up..."
