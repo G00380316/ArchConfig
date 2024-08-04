@@ -5,6 +5,7 @@
 # Clone and install yay
 git clone https://aur.archlinux.org/yay.git
 mv yay $HOME/.config
+cd $HOME/.config/yay
 makepkg -si --noconfirm
 
 # Ensure the script is run as root
@@ -12,6 +13,8 @@ if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"
     exit
 fi
+
+cd $HOME/ArchConfig
 
 # My Preferred Folders
 mkdir -p  Documents Videos Coding/Projects
@@ -31,7 +34,7 @@ flatpak install -y flathub com.getpostman.Postman
 # Clone Neovim Configuration Repository
 echo "Cloning Neovim configuration..."
 git clone https://github.com/G00380316/nvim.git
-sudo mv nvim ~/.config
+mv nvim ~/.config
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
@@ -68,7 +71,7 @@ unzip "$FONT_ZIP" -d JetBrainsMono
 # Step 3: Install the Font
 echo "Installing the font..."
 sudo mkdir -p $HOME/.local/share/fonts
-sudo mv JetBrainsMono/* $HOME/.local/share/fonts/
+mv JetBrainsMono/* $HOME/.local/share/fonts/
 fc-cache -fv
 
 # Step 4: Verify the Installation
@@ -151,14 +154,14 @@ sudo pacman -S ripgrep
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-sudo mv mozilla $HOME/.config
-sudo mv waybar $HOME/.config
-sudo mv wofi $HOME/.config
-sudo mv ly $HOME/.config
-sudo mv neofetch $HOME/.config
-sudo mv Documents $HOME
-sudo mv Videos $HOME
-sudo mv Coding $HOME
+mv mozilla $HOME/.config
+mv waybar $HOME/.config
+mv wofi $HOME/.config
+mv ly $HOME/.config
+mv neofetch $HOME/.config
+mv Documents $HOME
+mv Videos $HOME
+mv Coding $HOME
 
 # Clean up
 echo "Cleaning up..."
