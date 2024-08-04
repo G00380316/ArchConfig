@@ -6,7 +6,7 @@
 if [ "$EUID" -ne 0 ]; then
     # Clone and install yay
     git clone https://aur.archlinux.org/yay.git
-    mv yay $HOME/.config/
+    mv yay $HOME/.config
     cd $HOME/.config/yay
     makepkg -si --noconfirm
     echo "Please run as root"
@@ -14,7 +14,9 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # My Preferred Folders
-mkdir -p  ~/Documents ~/Videos ~/Coding/Projects
+cd $HOME
+mkdir -p  "Documents" "Videos" "Coding/Projects"
+cd $HOME/ArchConfig
 
 # Update the system
 echo "Updating system..."
@@ -67,8 +69,8 @@ unzip "$FONT_ZIP" -d JetBrainsMono
 
 # Step 3: Install the Font
 echo "Installing the font..."
-mkdir -p "$HOME/.local/share/fonts"
-mv JetBrainsMono/* "$HOME/.local/share/fonts/"
+mkdir -p $HOME/.local/share/fonts
+mv JetBrainsMono/* $HOME/.local/share/fonts/
 fc-cache -fv
 
 # Step 4: Verify the Installation
@@ -92,7 +94,7 @@ flatpak install flathub blanket -y
 
 # Wallpaper configuration
 
-mv Pictures "$HOME"
+mv Pictures "$HOME/"
 
 # Path to the wallpaper image
 WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
@@ -156,9 +158,6 @@ mv waybar "$HOME/.config/"
 mv wofi "$HOME/.config/"
 mv ly "$HOME/.config/"
 mv neofetch "$HOME/.config/"
-mv Documents "$HOME/"
-mv Videos "$HOME/"
-mv Coding "$HOME/"
 
 # Clean up
 echo "Cleaning up..."
