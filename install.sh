@@ -17,6 +17,78 @@ if [ "$EUID" -ne 0 ]; then
     mkdir -p  Document
     mkdir -p Coding/Projects
     echo "Please run as root"
+
+    # Move application config folders to .config
+    echo "Moving configuration folders to .config directory..."
+    cd ArchConfig
+    mv Pictures "$HOME/"
+    mv firefox "$HOME/.config/"
+    mv waybar "$HOME/.config/"
+    mv wofi "$HOME/.config/"
+    mv ly "$HOME/.config/"
+    mv neofetch "$HOME/.config/"
+
+    # Wallpaper configuration
+
+        # Path to the wallpaper image
+        WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
+
+        # Check if yay (AUR helper) is installed
+        if ! command -v yay &> /dev/null
+        then
+            echo "yay could not be found. Please install yay to proceed."
+            exit 1
+        fi
+
+        # Install swww using yay
+        echo "Installing swww..."
+        yay -S --noconfirm swww
+
+        # Start swww daemon if it's not already running
+        if ! pgrep -x "swww-daemon" > /dev/null
+        then
+            echo "Starting swww daemon..."
+            swww-daemon -y
+            sleep 1  # Give the daemon a second to start
+        fi
+
+        # Set the wallpaper
+        if [ -f "$WALLPAPER" ]; then
+            echo "Setting wallpaper to $WALLPAPER"
+            swww img "$WALLPAPER"
+            echo "Wallpaper set successfully."
+        else
+            echo "Wallpaper not found at $WALLPAPER. Please make sure the file exists."
+            exit 1
+        fi
+
+        # Install JetBrains Nerd Font
+        echo "Installing JetBrains Nerd Font..."
+
+        # Step 1: Download the Nerd Font
+        echo "Downloading JetBrains Nerd Font..."
+        FONT_ZIP="JetBrainsMono.zip"
+        FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
+        curl -LO "$FONT_URL"
+
+        # Step 2: Extract the Font
+        echo "Extracting the font..."
+        unzip "$FONT_ZIP" -d JetBrainsMono
+
+        # Step 3: Install the Font
+        echo "Installing the font..."
+        mkdir -p $HOME/.local/share/fonts
+        mv JetBrainsMono/* $HOME/.local/share/fonts/
+        fc-cache -fv
+
+        # Step 4: Verify the Installation
+        echo "Verifying the installation..."
+        if fc-list | grep -qi "JetBrains Mono"; then
+            echo "JetBrains Nerd Font installed successfully!"
+        else
+            echo "Font installation failed."
+        fi
+
     exit
 fi
 
@@ -56,33 +128,6 @@ sudo pacman -S --noconfirm v4l2loopback-dkms
 echo "Installing PHP and Lua..."
 sudo pacman -S --noconfirm php lua
 
-# Install JetBrains Nerd Font
-echo "Installing JetBrains Nerd Font..."
-
-# Step 1: Download the Nerd Font
-echo "Downloading JetBrains Nerd Font..."
-FONT_ZIP="JetBrainsMono.zip"
-FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
-curl -LO "$FONT_URL"
-
-# Step 2: Extract the Font
-echo "Extracting the font..."
-unzip "$FONT_ZIP" -d JetBrainsMono
-
-# Step 3: Install the Font
-echo "Installing the font..."
-mkdir -p $HOME/.local/share/fonts
-mv JetBrainsMono/* $HOME/.local/share/fonts/
-fc-cache -fv
-
-# Step 4: Verify the Installation
-echo "Verifying the installation..."
-if fc-list | grep -qi "JetBrains Mono"; then
-    echo "JetBrains Nerd Font installed successfully!"
-else
-    echo "Font installation failed."
-fi
-
 # Install Flatpak and Obsidian,Vesktop,Postman,DbGate
 echo "Installing Flatpak and Obsidian..."
 sudo pacman -S --noconfirm flatpak
@@ -93,42 +138,6 @@ flatpak install flathub vesktop -y
 flatpak install flathub dbgate -y
 flatpak install flathub obsidian -y
 flatpak install flathub blanket -y
-
-# Wallpaper configuration
-
-mv Pictures "$HOME/"
-
-# Path to the wallpaper image
-WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
-
-# Check if yay (AUR helper) is installed
-if ! command -v yay &> /dev/null
-then
-    echo "yay could not be found. Please install yay to proceed."
-    exit 1
-fi
-
-# Install swww using yay
-echo "Installing swww..."
-yay -S --noconfirm swww
-
-# Start swww daemon if it's not already running
-if ! pgrep -x "swww-daemon" > /dev/null
-then
-    echo "Starting swww daemon..."
-    swww-daemon -y
-    sleep 1  # Give the daemon a second to start
-fi
-
-# Set the wallpaper
-if [ -f "$WALLPAPER" ]; then
-    echo "Setting wallpaper to $WALLPAPER"
-    swww img "$WALLPAPER"
-    echo "Wallpaper set successfully."
-else
-    echo "Wallpaper not found at $WALLPAPER. Please make sure the file exists."
-    exit 1
-fi
 
 # Extras
 
@@ -152,14 +161,6 @@ sudo pacman -S --noconfirm fd
 
 # A command-line search tool that recursively searches your current directory for a regex pattern
 sudo pacman -S --noconfirm ripgrep
-
-# Move application config folders to .config
-echo "Moving configuration folders to .config directory..."
-mv firefox "$HOME/.config/"
-mv waybar "$HOME/.config/"
-mv wofi "$HOME/.config/"
-mv ly "$HOME/.config/"
-mv neofetch "$HOME/.config/"
 
 # Clean up
 echo "Cleaning up..."
