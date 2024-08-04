@@ -163,7 +163,7 @@ sudo pacman -S --noconfirm htop
 # A simple, fast, and user-friendly alternative to the 'find' command. "'fd' -e" 'everthing'
 sudo pacman -S --noconfirm fd
 
-# A command-line search tool that recursively searches your current directory for a regex pattern
+# A command-line search tool that recursively searches your current directory for a regex pattern "rg"
 sudo pacman -S --noconfirm ripgrep
 
 # Clean up
