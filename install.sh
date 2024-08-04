@@ -15,7 +15,10 @@ fi
 
 # My Preferred Folders
 cd $HOME
-mkdir -p  "Documents" "Videos" "Coding/Projects"
+mkdir -p  Documents
+mkdir -p  Videos
+mkdir -p  Document
+mkdir -p Coding/Projects
 cd $HOME/ArchConfig
 
 # Update the system
