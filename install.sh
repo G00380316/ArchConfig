@@ -43,7 +43,6 @@ sudo pacman -S --noconfirm ffmpeg
 
 sudo pacman -S --noconfirm nvidia
 
-
 # Install Programming Languages
 
 # Install Python using pyenv
@@ -134,14 +133,14 @@ sudo pacman -S --noconfirm flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 flatpak install flathub org.vesktop.Vdesktop -y
-flatpak install flathub md.obsidian.Obsidian -y
-flatpak install flathub com.getpostman.Postman -y
 flatpak install flathub org.dbgate.DbGate -y
 
 # Wallpaper configuration
 
+mv ./Pictures ~/
+
 # Path to the wallpaper image
-WALLPAPER="~/ArchConfig/Pictures/Wallpapers/Luffylying.png"
+WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
 
 # Check if yay (AUR helper) is installed
 if ! command -v yay &> /dev/null
@@ -172,6 +171,32 @@ else
     exit 1
 fi
 
+# Extras
+
+# Youtube Video downloader
+sudo pacman -S yt-dlp
+
+# Terminal Calculator
+sudo pacman -S bc
+
+# Monitor hardware health ( CPU temperatures, fan speeds, voltages, and other system health metrics.)
+sudo pacman -S lm_sensors
+
+# Command-line tool for visualizing directory structures in a clear, hierarchical format
+sudo pacman -S tree
+
+# Interactive process viewer and system monitor for Unix-like operating systems.
+#sudo pacman -S htop
+
+# lightweight, customizable logout menu for Wayland-based desktop environments
+yay -S wlogout
+
+# A simple, fast, and user-friendly alternative to the 'find' command. "'fd' -e" 'everthing'
+sudo pacman -S fd
+
+# A command-line search tool that recursively searches your current directory for a regex pattern
+sudo pacman -S ripgrep
+
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
 mv ./mozilla ~/.config
@@ -179,7 +204,6 @@ mv ./waybar ~/.config
 mv ./wofi ~/.config
 mv ./ly ~/.config
 mv ./neofetch ~/.config
-mv ./Pictures ~/
 mv ./Documents ~/
 mv ./Videos ~/
 mv ./Coding ~/
