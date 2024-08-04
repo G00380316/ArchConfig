@@ -4,6 +4,9 @@
 
 # Ensure the script is run as root
 if [ "$EUID" -ne 0 ]; then
+
+    sudo pacman -S --noconfirm git
+
     # Clone and install yay
     git clone https://aur.archlinux.org/yay.git
     mv yay $HOME/.config
@@ -17,6 +20,7 @@ if [ "$EUID" -ne 0 ]; then
 
     # My Preferred Folders
     cd $HOME
+    dircolors -p > ~/.dircolors
     mkdir -p  Documents
     mkdir -p  Videos
     mkdir -p Coding/Projects
@@ -58,14 +62,54 @@ if [ "$EUID" -ne 0 ]; then
         mv JetBrainsMono $HOME/.local/share/fonts/
         fc-cache -fv
 
-        # Step 4: Verify the Installation
-        echo "Verifying the installation..."
-        if fc-list | grep -qi "JetBrains Mono"; then
-            echo "JetBrains Nerd Font installed successfully!"
-        else
-            echo "Font installation failed."
-        fi
+        # Install Python using pyenv
+        echo "Installing pyenv and Python..."
+        curl https://pyenv.run | bash
+        echo -e '\n# Pyenv configuration' >> ~/.bashrc
+        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
+        echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+        echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+        source ~/.bashrc
+        pyenv install 3.11.4
+        pyenv global 3.11.4
+        pip install -U hyfetch
 
+        # Install Java using SDKMAN!
+        echo "Installing SDKMAN! and Java..."
+        curl -s "https://get.sdkman.io" | bash
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
+        sdk install java
+        java -version
+
+        # Install Node.js using nvm
+        echo "Installing nvm and Node.js..."
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        source ~/.nvm/nvm.sh
+        nvm install node
+        nvm use node
+
+        # Install Ruby using rbenv
+        echo "Installing rbenv and Ruby..."
+        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-installer | bash
+        echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+        echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+        source ~/.bashrc
+        rbenv install 3.1.2
+        rbenv global 3.1.2
+
+        # Install Go
+        echo "Installing Go..."
+        wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz
+        sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+        source ~/.bashrc
+
+        # Install Rust
+        echo "Installing Rust..."
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        source ~/.cargo/env
+        source ~/.bashrc
+        rustup update
     exit
 fi
 
