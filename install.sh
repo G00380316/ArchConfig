@@ -23,7 +23,13 @@ git clone https://github.com/G00380316/nvim.git ./.config/nvim
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
-sudo pacman -S --noconfirm firefox waybar neovim obs-studio
+sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
+
+# To Screen-Capture Obs
+sudo pacman -S --noconfirm ffmpeg
+
+sudo pacman -S --noconfirm nvidia
+
 
 # Install Programming Languages
 
@@ -122,6 +128,8 @@ echo "Moving configuration folders to .config directory..."
 mv ./mozilla ../.config
 mv ./waybar ../.config
 mv ./wofi ../.config
+mv ./ly ../.config
+mv ./neofetch ../.config
 
 # Clean up
 echo "Cleaning up..."
