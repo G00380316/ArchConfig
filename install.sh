@@ -174,12 +174,15 @@ fi
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-mv ~/ArchConfig/mozilla ../.config
-mv ~/ArchConfig/waybar ../.config
-mv ~/ArchConfig/wofi ../.config
-mv ~/ArchConfig/ly ../.config
-mv ~/ArchConfig/neofetch ../.config
-mv ~/ArchConfig/Pictures ../
+mv ./mozilla ~/.config
+mv ./waybar ~/.config
+mv ./wofi ~/.config
+mv ./ly ~/.config
+mv ./neofetch ~/.config
+mv ./Pictures ~/
+mv ./Documents ~/
+mv ./Videos ~/
+mv ./Coding ~/
 
 # Clean up
 echo "Cleaning up..."
