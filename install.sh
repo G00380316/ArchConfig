@@ -20,9 +20,6 @@ if [ "$EUID" -ne 0 ]; then
     exit
 fi
 
-
-cd $HOME/ArchConfig
-
 # Update the system
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
