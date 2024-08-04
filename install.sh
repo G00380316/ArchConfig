@@ -19,7 +19,6 @@ if [ "$EUID" -ne 0 ]; then
     cd $HOME
     mkdir -p  Documents
     mkdir -p  Videos
-    mkdir -p  Document
     mkdir -p Coding/Projects
     echo "Please run as root"
 
