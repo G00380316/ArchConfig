@@ -117,6 +117,12 @@ flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub com.getpostman.Postman -y
 flatpak install flathub org.dbgate.DbGate -y
 
+# Move application config folders to .config
+echo "Moving configuration folders to .config directory..."
+mv ~/.mozilla ~/.config/firefox
+mv ~/.config/waybar ~/.config/waybar
+mv ~/.config/wofi ~/.config/wofi
+
 # Clean up
 echo "Cleaning up..."
 sudo pacman -Sc --noconfirm
