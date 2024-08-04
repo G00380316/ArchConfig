@@ -18,13 +18,9 @@ echo "Installing basic development tools..."
 sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc
 
 # Clone and install yay
-cd /tmp
 git clone https://aur.archlinux.org/yay.git
-cd yay
+sudo mv yay ~/.config
 makepkg -si --noconfirm
-
-# Install necessary applications using yay
-yay -S --noconfirm postman-bin obsidian
 
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -32,7 +28,8 @@ flatpak install -y flathub com.getpostman.Postman
 
 # Clone Neovim Configuration Repository
 echo "Cloning Neovim configuration..."
-git clone https://github.com/G00380316/nvim.git ./.config/nvim
+git clone https://github.com/G00380316/nvim.git
+sudo mv nvim ~/.config
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
@@ -43,56 +40,11 @@ sudo pacman -S --noconfirm ffmpeg
 
 sudo pacman -S --noconfirm nvidia
 
-# Install Programming Languages
+# This package provides integration for Wayland applications to access desktop services.
+sudo pacman -S --noconfirm xdg-desktop-portal-wlr
 
-# Install Python using pyenv
-echo "Installing pyenv and Python..."
-curl https://pyenv.run | bash
-echo -e '\n# Pyenv configuration' >> ~/.bashrc
-echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-source ~/.bashrc
-pyenv install 3.11.4
-pyenv global 3.11.4
-pip install -U hyfetch
-
-# Install Java using SDKMAN!
-echo "Installing SDKMAN! and Java..."
-curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install java
-java -version
-
-# Install Node.js using nvm
-echo "Installing nvm and Node.js..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source ~/.nvm/nvm.sh
-nvm install node
-nvm use node
-
-# Install Ruby using rbenv
-echo "Installing rbenv and Ruby..."
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-installer | bash
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-source ~/.bashrc
-rbenv install 3.1.2
-rbenv global 3.1.2
-
-# Install Go
-echo "Installing Go..."
-wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-source ~/.bashrc
-
-# Install Rust
-echo "Installing Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-source ~/.cargo/env
-source ~/.bashrc
-rustup update
+# This package allows you to create virtual video devices and is often used for streaming or video processing applications.
+sudo pacman -S --noconfirm v4l2loopback-dkms
 
 # Install PHP and Lua
 echo "Installing PHP and Lua..."
@@ -105,7 +57,6 @@ echo "Installing JetBrains Nerd Font..."
 echo "Downloading JetBrains Nerd Font..."
 FONT_ZIP="JetBrainsMono.zip"
 FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
-cd ~/Downloads
 curl -LO "$FONT_URL"
 
 # Step 2: Extract the Font
@@ -114,8 +65,8 @@ unzip "$FONT_ZIP" -d JetBrainsMono
 
 # Step 3: Install the Font
 echo "Installing the font..."
-mkdir -p ~/.local/share/fonts
-mv JetBrainsMono/* ~/.local/share/fonts/
+sudo mkdir -p ~/.local/share/fonts
+sudo mv JetBrainsMono/* ~/.local/share/fonts/
 fc-cache -fv
 
 # Step 4: Verify the Installation
@@ -132,12 +83,14 @@ sudo pacman -S --noconfirm flatpak
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak install flathub org.vesktop.Vdesktop -y
-flatpak install flathub org.dbgate.DbGate -y
+flatpak install flathub vesktop -y
+flatpak install flathub dbgate -y
+flatpak install flathub obsidian -y
+flatpak install flathub blanket -y
 
 # Wallpaper configuration
 
-mv ./Pictures ~/
+sudo mv Pictures ~/
 
 # Path to the wallpaper image
 WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
@@ -186,10 +139,7 @@ sudo pacman -S lm_sensors
 sudo pacman -S tree
 
 # Interactive process viewer and system monitor for Unix-like operating systems.
-#sudo pacman -S htop
-
-# lightweight, customizable logout menu for Wayland-based desktop environments
-yay -S wlogout
+sudo pacman -S htop
 
 # A simple, fast, and user-friendly alternative to the 'find' command. "'fd' -e" 'everthing'
 sudo pacman -S fd
@@ -199,19 +149,19 @@ sudo pacman -S ripgrep
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-mv ./mozilla ~/.config
-mv ./waybar ~/.config
-mv ./wofi ~/.config
-mv ./ly ~/.config
-mv ./neofetch ~/.config
-mv ./Documents ~/
-mv ./Videos ~/
-mv ./Coding ~/
+sudo mv mozilla ~/.config
+sudo mv waybar ~/.config
+sudo mv wofi ~/.config
+sudo mv ly ~/.config
+sudo mv neofetch ~/.config
+sudo mv Documents ~/
+sudo mv Videos ~/
+sudo mv Coding ~/
 
 # Clean up
 echo "Cleaning up..."
 sudo pacman -Sc --noconfirm
-rm -rf ~/Downloads/JetBrainsMono "$FONT_ZIP"
+rm -rf ~/ArchConfig/JetBrainsMono "$FONT_ZIP"
 
 echo "All done!"
 
