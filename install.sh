@@ -110,7 +110,7 @@ yay -S --noconfirm swww
 if ! pgrep -x "swww-daemon" > /dev/null
 then
     echo "Starting swww daemon..."
-    swww init
+    swww-daemon
     sleep 1  # Give the daemon a second to start
 fi
 
