@@ -164,6 +164,9 @@ mv ./waybar ../.config
 mv ./wofi ../.config
 mv ./ly ../.config
 mv ./neofetch ../.config
+mv ./Documents ../
+mv ./Videos ../
+mv ./Pictures ../
 
 # Clean up
 echo "Cleaning up..."
