@@ -55,6 +55,7 @@ if [ "$EUID" -ne 0 ]; then
         echo "Installing the font..."
         cd $HOME/.local/share
         mkdir -p fonts
+        cd $HOME/ArchConfig
         mv JetBrainsMono $HOME/.local/share/fonts/
         fc-cache -fv
 
@@ -101,8 +102,8 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
     if ! pgrep -x "swww-daemon" > /dev/null
     then
         echo "Starting swww daemon..."
-        swww-daemon
-        sleep 1  # Give the daemon a second to start
+        swww-daemon &
+        sleep 3  # Give the daemon a three second to start
     fi
 
     # Set the wallpaper
