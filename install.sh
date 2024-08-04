@@ -10,6 +10,11 @@ if [ "$EUID" -ne 0 ]; then
     cd $HOME/.config/yay
     makepkg -si --noconfirm
 
+    # Clone Neovim Configuration Repository
+    echo "Cloning Neovim configuration..."
+    git clone https://github.com/G00380316/nvim.git
+    mv nvim $HOME/.config
+
     # My Preferred Folders
     cd $HOME
     mkdir -p  Documents
@@ -21,6 +26,7 @@ if [ "$EUID" -ne 0 ]; then
     # Move application config folders to .config
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
+    mv .bashrc "$HOME"
     mv Pictures "$HOME/"
     mv firefox "$HOME/.config/"
     mv waybar "$HOME/.config/"
@@ -28,39 +34,9 @@ if [ "$EUID" -ne 0 ]; then
     mv ly "$HOME/.config/"
     mv neofetch "$HOME/.config/"
 
-    # Wallpaper configuration
-
-        # Path to the wallpaper image
-        WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
-
-        # Check if yay (AUR helper) is installed
-        if ! command -v yay &> /dev/null
-        then
-            echo "yay could not be found. Please install yay to proceed."
-            exit 1
-        fi
-
-        # Install swww using yay
-        echo "Installing swww..."
-        yay -S --noconfirm swww
-
-        # Start swww daemon if it's not already running
-        if ! pgrep -x "swww-daemon" > /dev/null
-        then
-            echo "Starting swww daemon..."
-            swww-daemon -y
-            sleep 1  # Give the daemon a second to start
-        fi
-
-        # Set the wallpaper
-        if [ -f "$WALLPAPER" ]; then
-            echo "Setting wallpaper to $WALLPAPER"
-            swww img "$WALLPAPER"
-            echo "Wallpaper set successfully."
-        else
-            echo "Wallpaper not found at $WALLPAPER. Please make sure the file exists."
-            exit 1
-        fi
+    # Install swww using yay
+    echo "Installing swww..."
+    yay -S --noconfirm swww
 
         # Install JetBrains Nerd Font
         echo "Installing JetBrains Nerd Font..."
@@ -77,8 +53,9 @@ if [ "$EUID" -ne 0 ]; then
 
         # Step 3: Install the Font
         echo "Installing the font..."
-        mkdir -p $HOME/.local/share/fonts
-        mv JetBrainsMono/* $HOME/.local/share/fonts/
+        cd $HOME/.local/share
+        mkdir -p fonts
+        mv JetBrainsMono $HOME/.local/share/fonts/
         fc-cache -fv
 
         # Step 4: Verify the Installation
@@ -104,14 +81,40 @@ sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub com.getpostman.Postman
 
-# Clone Neovim Configuration Repository
-echo "Cloning Neovim configuration..."
-git clone https://github.com/G00380316/nvim.git
-mv nvim ~/.config
-
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
 sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
+
+    # Wallpaper configuration
+
+    # Path to the wallpaper image
+    WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
+
+    # Check if yay (AUR helper) is installed
+    if ! command -v yay &> /dev/null
+    then
+        echo "yay could not be found. Please install yay to proceed."
+        exit 1
+    fi
+
+    # Start swww daemon if it's not already running
+    if ! pgrep -x "swww-daemon" > /dev/null
+    then
+        echo "Starting swww daemon..."
+        swww-daemon
+        sleep 1  # Give the daemon a second to start
+    fi
+
+    # Set the wallpaper
+    if [ -f "$WALLPAPER" ]; then
+        echo "Setting wallpaper to $WALLPAPER"
+        swww img "$WALLPAPER"
+        echo "Wallpaper set successfully."
+    else
+        echo "Wallpaper not found at $WALLPAPER. Please make sure the file exists."
+        exit 1
+    fi
+
 
 # To Screen-Capture Obs
 sudo pacman -S --noconfirm ffmpeg
