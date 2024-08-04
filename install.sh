@@ -2,19 +2,16 @@
 
 # Run First without root if yay not installed
 
-# Clone and install yay
-git clone https://aur.archlinux.org/yay.git
-mv yay $HOME/.config
-cd $HOME/.config/yay
-makepkg -si --noconfirm
-
 # Ensure the script is run as root
 if [ "$EUID" -ne 0 ]; then
+    # Clone and install yay
+    git clone https://aur.archlinux.org/yay.git
+    mv yay $HOME/.config
+    cd $HOME/.config/yay
+    makepkg -si --noconfirm
     echo "Please run as root"
     exit
 fi
-
-cd $HOME/ArchConfig
 
 # My Preferred Folders
 mkdir -p  Documents Videos Coding/Projects
