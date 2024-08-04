@@ -1,0 +1,32 @@
+Run sh files
+
+First:
+
+chmod +x install.sh
+sudo ./install.sh
+
+Second:
+
+chmod +x install_displaylink.sh
+sudo ./install_displaylink.sh
+
+Third:
+
+chmod +x util.sh
+sudo ./util.sh
+
+/// Running wallpaper at startup
+
+To ensure the wallpaper is set each time you start Hyperland, add the commands to start the swww daemon and set the wallpaper in your Hyperland startup script. Typically, this script is located at ~/.config/hypr/hyprland.conf or ~/.config/hypr/exec-once.sh.
+
+Add the following lines to your startup script:
+
+bash
+Copy code
+#!/bin/sh
+
+# Start swww daemon
+swww init
+
+# Set the wallpaper
+swww img ~/Pictures/wallpaper.jpg

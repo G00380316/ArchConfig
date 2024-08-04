@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # My Preferred Folders
-mkdir -p ./pictures ./documents ./videos ./applications ./coding/projects
+mkdir -p ./Documents ./Videos ./Coding/Projects
 
 # Update the system
 echo "Updating system..."
@@ -122,6 +122,40 @@ flatpak install flathub org.vesktop.Vdesktop -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub com.getpostman.Postman -y
 flatpak install flathub org.dbgate.DbGate -y
+
+# Wallpaper configuration
+
+# Path to the wallpaper image
+WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
+
+# Check if yay (AUR helper) is installed
+if ! command -v yay &> /dev/null
+then
+    echo "yay could not be found. Please install yay to proceed."
+    exit 1
+fi
+
+# Install swww using yay
+echo "Installing swww..."
+yay -S --noconfirm swww
+
+# Start swww daemon if it's not already running
+if ! pgrep -x "swww-daemon" > /dev/null
+then
+    echo "Starting swww daemon..."
+    swww init
+    sleep 1  # Give the daemon a second to start
+fi
+
+# Set the wallpaper
+if [ -f "$WALLPAPER" ]; then
+    echo "Setting wallpaper to $WALLPAPER"
+    swww img "$WALLPAPER"
+    echo "Wallpaper set successfully."
+else
+    echo "Wallpaper not found at $WALLPAPER. Please make sure the file exists."
+    exit 1
+fi
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
