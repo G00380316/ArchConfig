@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # My Preferred Folders
-mkdir -p ~/pictures ~/documents ~/videos ~/applications ~/coding/projects
+mkdir -p ./pictures ./documents ./videos ./applications ./coding/projects
 
 # Update the system
 echo "Updating system..."
@@ -19,7 +19,7 @@ sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc
 
 # Clone Neovim Configuration Repository
 echo "Cloning Neovim configuration..."
-git clone https://github.com/G00380316/nvim.git ~/.config/nvim
+git clone https://github.com/G00380316/nvim.git ./.config/nvim
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
@@ -34,7 +34,7 @@ echo -e '\n# Pyenv configuration' >> ~/.bashrc
 echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-source ~/.bashrc
+source ./.bashrc
 pyenv install 3.11.4
 pyenv global 3.11.4
 pip install -U hyfetch
@@ -48,7 +48,7 @@ sdk install java
 # Install Node.js using nvm
 echo "Installing nvm and Node.js..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source ~/.nvm/nvm.sh
+source ./.nvm/nvm.sh
 nvm install node
 nvm use node
 
@@ -57,7 +57,7 @@ echo "Installing rbenv and Ruby..."
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-installer | bash
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-source ~/.bashrc
+source ./.bashrc
 rbenv install 3.1.2
 rbenv global 3.1.2
 
@@ -66,7 +66,7 @@ echo "Installing Go..."
 wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-source ~/.bashrc
+source ./.bashrc
 
 # Install Rust
 echo "Installing Rust..."
@@ -85,7 +85,7 @@ echo "Installing JetBrains Nerd Font..."
 echo "Downloading JetBrains Nerd Font..."
 FONT_ZIP="JetBrainsMono.zip"
 FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
-cd ~/Downloads
+cd ./Downloads
 curl -LO "$FONT_URL"
 
 # Step 2: Extract the Font
@@ -94,8 +94,8 @@ unzip "$FONT_ZIP" -d JetBrainsMono
 
 # Step 3: Install the Font
 echo "Installing the font..."
-mkdir -p ~/.local/share/fonts
-mv JetBrainsMono/* ~/.local/share/fonts/
+mkdir -p ./.local/share/fonts
+mv JetBrainsMono/* ./.local/share/fonts/
 fc-cache -fv
 
 # Step 4: Verify the Installation
@@ -119,14 +119,14 @@ flatpak install flathub org.dbgate.DbGate -y
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-mv ~/.mozilla ~/.config/firefox
-mv ~/.config/waybar ~/.config/waybar
-mv ~/.config/wofi ~/.config/wofi
+mv ./mozilla ../.config
+mv ./waybar ../.config
+mv ./wofi ../.config
 
 # Clean up
 echo "Cleaning up..."
 sudo pacman -Sc --noconfirm
-rm -rf ~/Downloads/JetBrainsMono "$FONT_ZIP"
+rm -rf ./Downloads/JetBrainsMono "$FONT_ZIP"
 
 echo "All done!"
 
