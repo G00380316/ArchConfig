@@ -1,1 +1,0 @@
-makepkg -si --noconfirm

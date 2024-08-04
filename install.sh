@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Run First without root if yay not installed
+
+# Clone and install yay
+git clone https://aur.archlinux.org/yay.git
+mv yay $HOME/.config
+makepkg -si --noconfirm
+
 # Ensure the script is run as root
 if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"
@@ -16,12 +23,6 @@ sudo pacman -Syu --noconfirm
 # Development Tools
 echo "Installing basic development tools..."
 sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc
-
-# Clone and install yay
-git clone https://aur.archlinux.org/yay.git
-sudo mv yay $HOME/.config
-chmod +x yay.sh
-./yay.sh
 
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
