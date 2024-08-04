@@ -74,28 +74,12 @@ if [ "$EUID" -ne 0 ]; then
         pyenv global 3.11.4
         pip install -U hyfetch
 
-        # Install Java using SDKMAN!
-        echo "Installing SDKMAN! and Java..."
-        curl -s "https://get.sdkman.io" | bash
-        source "$HOME/.sdkman/bin/sdkman-init.sh"
-        sdk install java
-        java -version
-
         # Install Node.js using nvm
         echo "Installing nvm and Node.js..."
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
         source ~/.nvm/nvm.sh
         nvm install node
         nvm use node
-
-        # Install Ruby using rbenv
-        echo "Installing rbenv and Ruby..."
-        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-installer | bash
-        echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-        echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-        source ~/.bashrc
-        rbenv install 3.1.2
-        rbenv global 3.1.2
 
         # Install Go
         echo "Installing Go..."
@@ -119,7 +103,7 @@ sudo pacman -Syu --noconfirm
 
 # Development Tools
 echo "Installing basic development tools..."
-sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc
+sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc jdk-openjdk ruby
 
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
