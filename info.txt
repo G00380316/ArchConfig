@@ -26,7 +26,7 @@ Copy code
 #!/bin/sh
 
 # Start swww daemon
-swww init
+swww-daemon &
 
 # Set the wallpaper
 swww img ~/Pictures/wallpaper.jpg
@@ -81,3 +81,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source ~/.cargo/env
 source ~/.bashrc
 rustup update
+
+
+NOTE: Configure your /.config/hyper/hyprland.conf to run things
+      that need to be executed at the start of boot
