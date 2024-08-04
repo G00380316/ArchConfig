@@ -14,7 +14,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # My Preferred Folders
-mkdir -p  Documents Videos Coding/Projects
+mkdir -p  "$HOME/Documents" $"HOME/Videos" "$HOME/Coding/Projects"
 
 # Update the system
 echo "Updating system..."
@@ -67,8 +67,8 @@ unzip "$FONT_ZIP" -d JetBrainsMono
 
 # Step 3: Install the Font
 echo "Installing the font..."
-sudo mkdir -p $HOME/.local/share/fonts
-mv JetBrainsMono/* $HOME/.local/share/fonts/
+mkdir -p "$HOME/.local/share/fonts"
+mv JetBrainsMono/* "$HOME/.local/share/fonts/"
 fc-cache -fv
 
 # Step 4: Verify the Installation
@@ -92,7 +92,7 @@ flatpak install flathub blanket -y
 
 # Wallpaper configuration
 
-sudo mv Pictures $HOME
+mv Pictures "$HOME"
 
 # Path to the wallpaper image
 WALLPAPER="$HOME/Pictures/Wallpapers/Luffylying.png"
@@ -112,7 +112,7 @@ yay -S --noconfirm swww
 if ! pgrep -x "swww-daemon" > /dev/null
 then
     echo "Starting swww daemon..."
-    swww-daemon
+    swww-daemon -y
     sleep 1  # Give the daemon a second to start
 fi
 
@@ -129,36 +129,36 @@ fi
 # Extras
 
 # Youtube Video downloader
-sudo pacman -S yt-dlp
+sudo pacman -S --noconfirm yt-dlp
 
 # Terminal Calculator
-sudo pacman -S bc
+sudo pacman -S --noconfirm bc
 
 # Monitor hardware health ( CPU temperatures, fan speeds, voltages, and other system health metrics.)
-sudo pacman -S lm_sensors
+sudo pacman -S --noconfirm lm_sensors
 
 # Command-line tool for visualizing directory structures in a clear, hierarchical format
-sudo pacman -S tree
+sudo pacman -S --noconfirm tree
 
 # Interactive process viewer and system monitor for Unix-like operating systems.
-sudo pacman -S htop
+sudo pacman -S --noconfirm htop
 
 # A simple, fast, and user-friendly alternative to the 'find' command. "'fd' -e" 'everthing'
-sudo pacman -S fd
+sudo pacman -S --noconfirm fd
 
 # A command-line search tool that recursively searches your current directory for a regex pattern
-sudo pacman -S ripgrep
+sudo pacman -S --noconfirm ripgrep
 
 # Move application config folders to .config
 echo "Moving configuration folders to .config directory..."
-mv mozilla $HOME/.config
-mv waybar $HOME/.config
-mv wofi $HOME/.config
-mv ly $HOME/.config
-mv neofetch $HOME/.config
-mv Documents $HOME
-mv Videos $HOME
-mv Coding $HOME
+mv mozilla "$HOME/.config"
+mv waybar "$HOME/.config"
+mv wofi "$HOME/.config"
+mv ly "$HOME/.config"
+mv neofetch "$HOME/.config"
+mv Documents "$HOME"
+mv Videos "$HOME"
+mv Coding "$HOME"
 
 # Clean up
 echo "Cleaning up..."
