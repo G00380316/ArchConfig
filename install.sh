@@ -9,16 +9,18 @@ if [ "$EUID" -ne 0 ]; then
     mv yay $HOME/.config
     cd $HOME/.config/yay
     makepkg -si --noconfirm
+
+    # My Preferred Folders
+    cd $HOME
+    mkdir -p  Documents
+    mkdir -p  Videos
+    mkdir -p  Document
+    mkdir -p Coding/Projects
     echo "Please run as root"
     exit
 fi
 
-# My Preferred Folders
-cd $HOME
-mkdir -p  Documents
-mkdir -p  Videos
-mkdir -p  Document
-mkdir -p Coding/Projects
+
 cd $HOME/ArchConfig
 
 # Update the system
