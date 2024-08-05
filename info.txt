@@ -31,7 +31,7 @@ swww-daemon &
 # Set the wallpaper
 swww img ~/Pictures/wallpaper.jpg
 
-#Commands for languages
+#Commands for languages (Languages are installed automatically by script)
 
 # Install Python using pyenv
 echo "Installing pyenv and Python..."

@@ -140,7 +140,7 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
         echo "Wallpaper set successfully."
     else
         echo "Wallpaper not found at $WALLPAPER. Please make sure the file exists."
-        exit 1
+        #exit 1
     fi
 
 

@@ -33,4 +33,37 @@ else
     echo "No SSH applications found to remove."
 fi
 
+# Remove SSH applications
+echo "Removing UserFeedback Console applications..."
+if ls /usr/share/applications | grep -q -i userFeedback; then
+    sudo rm -r  /usr/share/applications/org.kde.kuserfeedback-console.desktop  && echo "Removed UserFeedback Console"
+else
+    echo "No SSH applications found to remove."
+fi
+
+apps_to_hide=(
+"jconsole-java-openjdk.desktop"
+"jshell-java-openjdk.desktop"
+"htop.desktop"
+"qvidcap.desktop"
+"qv4l2.desktop"
+"vim.desktop"
+"nvim.desktop"
+"org.gnupg.pinentry-qt5.desktop"
+"org.gnupg.pinentry-qt.desktop"
+)
+
+applications_dir="/usr/share/applications"
+
+for app in "${apps_to_hide[@]}"; do 
+   desktop_file="$applications_dir/$app"
+   if [ -f "$desktop_file" ]; then
+      echo "Hiding $app"
+      sudo sed -i '/^NoDisplay=/d' "$desktop_file" # Remove existing NoDisplay line
+      echo "NoDisplay=true" | sudo tee -a "$desktop_file" > /dev/null
+   else
+      echo "$app not found"
+   fi
+done
+
 echo "All done!"
