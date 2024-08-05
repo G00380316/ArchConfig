@@ -103,7 +103,7 @@ sudo pacman -Syu --noconfirm
 
 # Development Tools
 echo "Installing basic development tools..."
-sudo pacman -S --noconfirm base-devel curl git wget unzip lazygit gcc jdk-openjdk ruby
+sudo pacman -S --noconfirm base-devel curl git github-cli wget unzip lazygit gcc jdk-openjdk ruby
 
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

@@ -84,4 +84,4 @@ rustup update
 
 
 NOTE: Configure your /.config/hyper/hyprland.conf to run things
-      that need to be executed at the start of boot
+      that need to be executed at the start of boot and don't forget to login into your github by running "gh auth login"
