@@ -202,7 +202,11 @@ sudo pacman -S --noconfirm fd
 # A command-line search tool that recursively searches your current directory for a regex pattern "rg"
 sudo pacman -S --noconfirm ripgrep
 
+# Sound utility
 sudo pacman -S --noconfirm pavucontrol
+
+# For Display Utility
+sudo pacman --noconfirm -S wlr-randr
 
 # Clean up
 echo "Cleaning up..."
