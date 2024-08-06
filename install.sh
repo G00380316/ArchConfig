@@ -114,6 +114,9 @@ sudo pacman -S --noconfirm base-devel curl git github-cli wget unzip lazygit gcc
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub com.getpostman.Postman
+flatpak install -y flathub org.mozilla.Thunderbird
+# Windows App Emulator
+#flatpak install -y flathub com.usebottles.bottles
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
