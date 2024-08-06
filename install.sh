@@ -206,7 +206,10 @@ sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm pavucontrol
 
 # For Display Utility
-sudo pacman --noconfirm -S wlr-randr
+sudo pacman -S --noconfirm wlr-randr
+sudo pacman -S --noconfirm pipewire pipewire-pulse pipewire-jack
+sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
+systemctl --user enable --now pipewire pipewire-pulse
 
 # Clean up
 echo "Cleaning up..."
