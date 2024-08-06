@@ -91,7 +91,7 @@
 	"on-click-right": "waybar-module-pomodoro reset",
 },
 	"pulseaudio": {
-		"format": "{icon} {volume:2}%",
+		"format": "{icon}   {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
 		"format-muted": "󰝟",
 		"format-icons": {
@@ -123,7 +123,7 @@
 			"warning": 50,
 			"critical": 20
 		},
-		"format": "{icon}  {capacity}%",
+		"format": "{icon}   {capacity}%",
 		"format-icons": [
 			"",
 			"",
