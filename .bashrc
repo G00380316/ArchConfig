@@ -6,6 +6,8 @@ case $- in
       *) return;;
 esac
 
+neofetch
+
 # History settings
 HISTCONTROL=ignoreboth
 shopt -s histappend

@@ -201,4 +201,3 @@ sudo pacman -Sc --noconfirm
 rm -rf ~/ArchConfig/JetBrainsMono "$FONT_ZIP"
 
 echo "All done! Now run util.sh and displaylinkinstall.sh and look at info.txt"
-
