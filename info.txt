@@ -90,5 +90,102 @@ monitor= HDMI-A-1,1920x1080@120,auto,1.25
 // To check monitors
 wlr-randr
 
+To connect to a Wi-Fi network using iwctl, which is a command-line utility for managing wireless connections in the iwd (iNet wireless daemon), follow these steps:
+Step 1: Start iwd
+
+Make sure that the iwd service is running. You can start it with the following command:
+
+// bash
+
+sudo systemctl start iwd
+sudo systemctl enable iwd
+
+Step 2: Launch iwctl
+
+Open a terminal and start the iwctl interactive prompt:
+
+// bash
+
+iwctl
+
+Step 3: List Available Devices
+
+Once in the iwctl prompt, list your wireless devices:
+
+// plaintext
+
+device list
+
+This will show you your available wireless interfaces (e.g., wlan0, wlp2s0).
+Step 4: Scan for Available Networks
+
+Next, you need to scan for available Wi-Fi networks:
+
+// plaintext
+
+station <device> scan
+
+Replace <device> with the name of your wireless interface (e.g., wlan0).
+Step 5: List Available Networks
+
+After scanning, list the available networks:
+
+// plaintext
+
+station <device> get-networks
+
+This will display a list of nearby Wi-Fi networks.
+Step 6: Connect to a Wi-Fi Network
+
+To connect to a specific network, use the following command:
+
+// plaintext
+
+station <device> connect <SSID>
+
+Replace <device> with your wireless interface and <SSID> with the name of the Wi-Fi network you want to connect to.
+Step 7: Enter the Wi-Fi Password
+
+If the network is secured, you’ll be prompted to enter the password. Type it in and press Enter.
+Step 8: Check Connection Status
+
+You can check the connection status by running:
+
+// plaintext
+
+station <device> show
+
+Step 9: Exit iwctl
+
+To exit the iwctl interactive prompt, simply type:
+
+// plaintext
+
+exit
+
+Verify Internet Connection
+
+After connecting to the network, verify your internet connection:
+
+// bash
+
+ping -c 4 google.com
+
+If you receive replies, you're successfully connected to the internet!
+Additional Commands
+
+    List connected networks: To see connected networks, you can use:
+
+    plaintext
+
+station <device> show
+
+Disconnect from a network: To disconnect from the current network:
+
+// plaintext
+
+station <device> disconnect
+
+
 NOTE: Configure your /.config/hyper/hyprland.conf to run things
       that need to be executed at the start of boot and don't forget to login into your github by running "gh auth login"
