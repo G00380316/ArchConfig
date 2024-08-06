@@ -30,6 +30,7 @@ if [ "$EUID" -ne 0 ]; then
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
     mv .bashrc "$HOME"
+    mv .poshthemes "$HOME"
     mv Pictures "$HOME/"
     mv firefox "$HOME/.config/"
     mv waybar "$HOME/.config/"
@@ -61,6 +62,11 @@ if [ "$EUID" -ne 0 ]; then
         cd $HOME/ArchConfig
         mv JetBrainsMono $HOME/.local/share/fonts/
         fc-cache -fv
+   
+       # Installing oh my posh using yay
+       echo "Installing oh my posh..."
+       yay -S oh-my-posh-bin
+        
 
         # Install Python using pyenv
         echo "Installing pyenv and Python..."

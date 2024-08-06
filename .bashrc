@@ -6,6 +6,7 @@ case $- in
       *) return;;
 esac
 
+# Terminal Styling
 neofetch
 
 # History settings
@@ -59,3 +60,28 @@ case "$TERM" in
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
         ;;
 esac
+
+# Pyenv configuration
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH=$PATH:/usr/local/go/bin
+. "$HOME/.cargo/env"
+
+# Pyenv configuration
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+export PATH=$PATH:/usr/local/go/bin
+
+# Terminal Styling
+#
+#eval "$(oh-my-posh init bash)"
+#eval "$(oh-my-posh init bash --config ~/.poshthemes/jandedobbeleer.omp.json)"
+#eval "$(oh-my-posh init bash --config ~/.poshthemes/velvet.omp.json)"
+#eval "$(oh-my-posh init bash --config ~/.poshthemes/tokyo.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.poshthemes/tokyonight_storm.omp.json)"
