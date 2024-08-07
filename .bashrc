@@ -81,6 +81,9 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 export PATH=$PATH:/usr/local/go/bin
 
+# Dont forget to build the Rust module
+export PATH="$HOME/.config/waybar/waybar-module-pomodoro/target/release:$PATH"
+
 # Terminal Styling
 #
 #eval "$(oh-my-posh init bash)"
