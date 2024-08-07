@@ -55,7 +55,7 @@ if [ "$EUID" -ne 0 ]; then
 
         # Step 2: Extract the Font
         echo "Extracting the font..."
-        unzip "$FONT_ZIP" -d JetBrainsMono
+        unzip JetBrainsMono.zip -d JetBrainsMono
 
         # Step 3: Install the Font
         echo "Installing the font..."
