@@ -5,6 +5,7 @@
 	"position": "top",
     "height": 26,
 	"modules-left": [
+    "sway/workspaces",
 		"custom/right-arrow-dark",
 		"custom/right-arrow-light",
         "network",
