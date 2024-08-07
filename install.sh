@@ -215,6 +215,7 @@ sudo pacman -S --noconfirm wlr-randr
 sudo pacman -S --noconfirm pipewire pipewire-pulse pipewire-jack
 sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
 sudo pacman -S --noconfirm blueman
+sudo pacman -S bluez bluez-utils
 # Might break install hasn't been tested so if any errors remove and run on your own after 
 sudo systemctl --user enable --now pipewire pipewire-pulse
 

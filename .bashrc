@@ -36,6 +36,7 @@ alias l='ls -CF'
 alias q='exit'
 alias e='exec bash'
 alias r='reload'
+alias k='pkill'
 
 # Useful functions
 mkcd() { mkdir -p "$1" && cd "$1"; }

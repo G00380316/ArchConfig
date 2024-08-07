@@ -13,4 +13,6 @@ and then go back to terminal and run this command
 
 sudo systemctl restart NetworkManager
 
+sudo systemctl enable NetworkManager
+
 the network manager should now be working with your system and waybar this is a iwd setup btw so make sure you don't have any other conflicting packages
