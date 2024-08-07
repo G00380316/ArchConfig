@@ -153,6 +153,8 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
         #exit 1
     fi
 
+# Cleaning Utility
+sudo pacman -S bleachbit
 
 # To Screen-Capture Obs
 sudo pacman -S --noconfirm ffmpeg
