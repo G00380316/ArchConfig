@@ -30,7 +30,7 @@ if [ "$EUID" -ne 0 ]; then
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
     mv .bashrc "$HOME"
-    mv .xinitric "$HOME"
+    #mv .xinitric "$HOME"
     mv .poshthemes "$HOME"
     mv Pictures "$HOME/"
     mv firefox "$HOME/.config/"
@@ -42,6 +42,7 @@ if [ "$EUID" -ne 0 ]; then
     # Install swww using yay
     echo "Installing swww..."
     yay -S --noconfirm swww
+    sudo pacman -S --noconfirm unzip
 
         # Install JetBrains Nerd Font
         echo "Installing JetBrains Nerd Font..."
@@ -66,7 +67,7 @@ if [ "$EUID" -ne 0 ]; then
    
        # Installing oh my posh using yay
        echo "Installing oh my posh..."
-       yay -S oh-my-posh-bin
+       yay -S --noconfirm oh-my-posh-bin
         
 
         # Install Python using pyenv
@@ -110,7 +111,7 @@ sudo pacman -Syu --noconfirm
 
 # Development Tools
 echo "Installing basic development tools..."
-sudo pacman -S --noconfirm base-devel curl git github-cli wget unzip lazygit gcc jdk-openjdk ruby
+sudo pacman -S --noconfirm base-devel curl git github-cli wget lazygit gcc jdk-openjdk ruby
 
 # Install Postman via Flatpak as a fallback
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -154,7 +155,7 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
     fi
 
 # Cleaning Utility
-sudo pacman -S bleachbit
+sudo pacman -S --noconfirm bleachbit
 
 # To Screen-Capture Obs
 sudo pacman -S --noconfirm ffmpeg
@@ -215,7 +216,7 @@ sudo pacman -S --noconfirm wlr-randr
 sudo pacman -S --noconfirm pipewire pipewire-pulse pipewire-jack
 sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
 sudo pacman -S --noconfirm blueman
-sudo pacman -S bluez bluez-utils
+sudo pacman -S --noconfirm bluez bluez-utils
 # Might break install hasn't been tested so if any errors remove and run on your own after 
 sudo systemctl --user enable --now pipewire pipewire-pulse
 
