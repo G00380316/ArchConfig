@@ -1,0 +1,16 @@
+This is to install wifi manager that works with iwd you should have every base package needed from the install.sh script but you will need to configure NetworkManager to use iwd
+
+so type this command in terminal
+
+sudo nano /etc/NetworkManager/NetworkManager.conf
+
+and paste these lines 
+
+[device]
+wifi.backend=iwd
+
+and then go back to terminal and run this command 
+
+sudo systemctl restart NetworkManager
+
+the network manager should now be working with your system and waybar this is a iwd setup btw so make sure you don't have any other conflicting packages
