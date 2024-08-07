@@ -1,0 +1,47 @@
+This is to install bluetooth using pipewire you should have every base package needed from the install.sh script
+
+1. sudo nano /etc/pipewire/pipewire.conf
+
+2. Paste what is in the arrows <context.modules = [
+    { name = libpipewire-module-bluetooth }
+]>
+
+# This is to make sure bluetooth is enabled properly
+
+3. Check Blue Service with this command
+
+sudo systemctl status bluetooth
+
+If not running, run this command 
+
+sudo systemctl start bluetooth
+
+And thats it the bluetooth manager 'Blueman' will be installed with the install.sh
+
+If any problems run this command to make sure you have all necessary packages and try steps again
+
+pacman -Qs pipewire
+
+Output: 
+
+▶ pacman -Qs pipewire
+local/gst-plugin-pipewire 1:1.2.2-1
+    Multimedia graph framework - pipewire plugin
+local/libpipewire 1:1.2.2-1
+    Low-latency audio/video router and processor - client library
+local/libwireplumber 0.5.5-1
+    Session / policy manager implementation for PipeWire - client library
+local/pipewire 1:1.2.2-1
+    Low-latency audio/video router and processor
+local/pipewire-alsa 1:1.2.2-1
+    Low-latency audio/video router and processor - ALSA configuration
+local/pipewire-audio 1:1.2.2-1
+    Low-latency audio/video router and processor - Audio support
+local/pipewire-jack 1:1.2.2-1
+    Low-latency audio/video router and processor - JACK replacement
+local/pipewire-pulse 1:1.2.2-1
+    Low-latency audio/video router and processor - PulseAudio replacement
+local/pipewire-session-manager 1:1.2.2-1
+    Session manager for PipeWire (default provider)
+local/wireplumber 0.5.5-1
+    Session / policy manager implementation for PipeWire

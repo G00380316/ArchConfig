@@ -208,8 +208,12 @@ sudo pacman -S --noconfirm pavucontrol
 
 # For Display Utility
 sudo pacman -S --noconfirm wlr-randr
+
+# Audio
 sudo pacman -S --noconfirm pipewire pipewire-pulse pipewire-jack
 sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
+sudo pacman -S --noconfirm blueman
+# Might break install hasn't been tested so if any errors remove and run on your own after 
 systemctl --user enable --now pipewire pipewire-pulse
 
 # Clean up
