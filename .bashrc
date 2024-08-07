@@ -35,7 +35,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias q='exit'
 alias e='exec bash'
-alias r='reload'
+alias r='reboot'
 alias k='pkill'
 
 # Useful functions
