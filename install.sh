@@ -30,6 +30,7 @@ if [ "$EUID" -ne 0 ]; then
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
     mv .bashrc "$HOME"
+    mv .bash_profile "$HOME"
     mv .poshthemes "$HOME"
     mv Pictures "$HOME/"
     mv firefox "$HOME/.config/"

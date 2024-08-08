@@ -5,7 +5,7 @@
 	"position": "top",
     "height": 26,
 	"modules-left": [
-    "sway/workspaces",
+    "hyprland/workspaces",
 		"custom/right-arrow-dark",
 		"custom/right-arrow-light",
         "network",
@@ -62,9 +62,10 @@
 		"format": "",
 		"tooltip": false
 	},
-	"sway/workspaces": {
+	"hyprland/workspaces": {
 		"disable-scroll": true,
-		"format": "{name}"
+		"format": "{name}",
+    "interval": 1
 	},
 	"clock#1":{
 		"format": "{:%a}",
