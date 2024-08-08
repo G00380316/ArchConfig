@@ -15,4 +15,14 @@ sudo systemctl restart NetworkManager
 
 sudo systemctl enable NetworkManager
 
-the network manager should now be working with your system and waybar this is a iwd setup btw so make sure you don't have any other conflicting packages
+The network manager should now be working with your system and waybar this is a iwd setup btw so make sure you don't have any other conflicting packages
+
+// Useful commands for iwd 
+
+iwctl
+
+device list
+station wlan0 show 
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect "ROUTER_SSID"
