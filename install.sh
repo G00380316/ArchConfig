@@ -113,13 +113,6 @@ sudo pacman -Syu --noconfirm
 echo "Installing basic development tools..."
 sudo pacman -S --noconfirm base-devel curl git github-cli wget lazygit gcc jdk-openjdk ruby
 
-# Install Postman via Flatpak as a fallback
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub com.getpostman.Postman
-flatpak install -y flathub org.mozilla.Thunderbird
-# Windows App Emulator
-#flatpak install -y flathub com.usebottles.bottles
-
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
 sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
@@ -172,12 +165,14 @@ sudo pacman -S --noconfirm v4l2loopback-dkms
 echo "Installing PHP and Lua..."
 sudo pacman -S --noconfirm php lua
 
-# Install Flatpak and Obsidian,Vesktop,Postman,DbGate
+# Install Flatpak and Obsidian,Vesktop,Postman,DbGate,...etc
 echo "Installing Flatpak and Obsidian..."
 sudo pacman -S --noconfirm flatpak
-
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
+flatpak install -y flathub com.getpostman.Postman
+flatpak install -y flathub org.mozilla.Thunderbird
+# Windows App Emulator
+#flatpak install -y flathub com.usebottles.bottles
 flatpak install flathub vesktop -y
 flatpak install flathub dbgate -y
 flatpak install flathub obsidian -y
