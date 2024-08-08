@@ -37,6 +37,9 @@ alias q='exit'
 alias e='exec bash'
 alias r='reboot'
 alias k='pkill'
+alias f='fd'
+alias g='rg'
+alias n='nvim'
 
 # Useful functions
 mkcd() { mkdir -p "$1" && cd "$1"; }
