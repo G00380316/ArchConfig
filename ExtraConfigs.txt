@@ -36,4 +36,6 @@ cargo build --release
 
 now after this it should be working waybar fully with clickable buttons on the left hand side I advise looking at .bashrc to make sure some variables are the right ones for your system and also hyprland.conf
 
+So you might run into a problem with the rust binary jsut make sure you export its path in ".bash_profile" and it should work fine 
+
 After this I can't really remember if there is anymore so if there is please notify and I will tell you what to do on ezea128@gmail.com
