@@ -1,0 +1,39 @@
+Some things to note and do when you finish using the scripts install.sh in first normal and then sudo and then util.sh in sudo.
+
+Some files may be out of place so you should read the script in order to know where they ought to acually be.
+
+After you have made sure everything is in the right place
+
+It is must likely that the Nerd font folder didnt make it to its destintation so make sure its in the fonts folder in local/share
+
+next in the terminal just run this command in (Don't believe it has to be in that folder too)
+
+/// Clears cache and caches andy new fonts
+
+fc-cache -fv
+
+///
+
+After you done that after reboot your font should be in place next work on the bluetoothConfig and wifi Conifig files to make sure you have all the necessary dependecies to get waybar fully working 
+
+you will have to go to the waybar folder in terminal by "cd .config/waybar" and then first you have to build the script there like you have been doing install.sh and util.sh this allows waybar to access it when you click on the icon that triggers it which is the network icon 
+
+so if you want from home you can run this 
+
+chmod +x ./.config/waybar/networkmanager.sh
+
+or cd into it and just run
+
+chmod +x ./networkmanager.sh
+
+next cd into the waybar-module-pomodoro dir
+
+run this command 
+
+/// Builds the Rust exe 
+
+cargo build --release 
+
+now after this it should be working waybar fully with clickable buttons on the left hand side I advise looking at .bashrc to make sure some variables are the right ones for your system and also hyprland.conf
+
+After this I can't really remember if there is anymore so if there is please notify and I will tell you what to do on ezea128@gmail.com

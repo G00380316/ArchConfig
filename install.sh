@@ -30,7 +30,6 @@ if [ "$EUID" -ne 0 ]; then
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
     mv .bashrc "$HOME"
-    #mv .xinitric "$HOME"
     mv .poshthemes "$HOME"
     mv Pictures "$HOME/"
     mv firefox "$HOME/.config/"
@@ -55,7 +54,7 @@ if [ "$EUID" -ne 0 ]; then
 
         # Step 2: Extract the Font
         echo "Extracting the font..."
-        unzip JetBrainsMono.zip -d JetBrainsMono
+        unzip "$FONT_ZIP" -d JetBrainsMono
 
         # Step 3: Install the Font
         echo "Installing the font..."

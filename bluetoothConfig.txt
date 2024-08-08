@@ -1,5 +1,7 @@
 This is to install bluetooth using pipewire you should have every base package needed from the install.sh script
 
+NOTE: One and two can be ignored I believe only do if after the rest of the steps do not work!
+
 1. sudo nano /etc/pipewire/pipewire.conf
 
 2. Paste what is in the arrows <context.modules = [
