@@ -172,14 +172,17 @@ sudo pacman -S --noconfirm php lua
 echo "Installing Flatpak and Obsidian..."
 sudo pacman -S --noconfirm flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y com.getpostman.Postman
 flatpak install -y org.mozilla.Thunderbird
-# Windows App Emulator
-flatpak install -y com.usebottles.bottles
 flatpak install vesktop -y
 flatpak install dbgate -y
 flatpak install obsidian -y
 flatpak install blanket -y
+flatpak install flathub com.github.KRTirtho.Spotube -y
+flatpak install flathub org.moneymanagerex.MMEX -y
+flatpak install flathub dev.bragefuglseth.Keypunch -y
+flatpak install flathub net.lugsole.bible_gui -y
+#flatpak install flathub io.appflowy.AppFlowy -y
+#flatpak install flathub org.kde.minuet -y
 
 # Important we use flatseal to manager our flatpak apps (Cuase sometimes they don't render properly)
 flatpak install flatseal -y 
