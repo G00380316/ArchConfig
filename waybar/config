@@ -8,7 +8,7 @@
     "hyprland/workspaces",
         "network",
         "pulseaudio",
-
+        "custom/pomodoro",
 	],
 	"modules-center": [
 		"clock#1",
