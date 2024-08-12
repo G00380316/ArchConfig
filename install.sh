@@ -181,6 +181,7 @@ flatpak install flathub com.github.KRTirtho.Spotube -y
 flatpak install flathub org.moneymanagerex.MMEX -y
 flatpak install flathub dev.bragefuglseth.Keypunch -y
 flatpak install flathub net.lugsole.bible_gui -y
+flatpak install flathub com.usebruno.Bruno -y
 #flatpak install flathub io.appflowy.AppFlowy -y
 #flatpak install flathub org.kde.minuet -y
 
@@ -223,9 +224,6 @@ sudo pacman -S --noconfirm blueman
 sudo pacman -S --noconfirm bluez bluez-utils
 # Might break install hasn't been tested so if any errors remove and run on your own after 
 sudo systemctl --user enable --now pipewire pipewire-pulse
-
-# NetworkManager
-sudo pacman -S --noconfirm networkmanager iwd nm-connection-editor
 
 # Clean up
 echo "Cleaning up..."
