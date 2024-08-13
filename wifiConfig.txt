@@ -17,6 +17,31 @@ sudo systemctl enable NetworkManager
 
 The network manager should now be working with your system and waybar this is a iwd setup btw so make sure you don't have any other conflicting packages
 
+// Warning: Install Network Manager if you want but dont use it anymore just add it back to the waybar config
+// If iwd is acting weird 
+
+--- iwd may be configured to disable network configuration. Check the main configuration file:
+
+sudo nano /etc/iwd/main.conf
+
+--- Look for a [General] section and ensure it doesn't contain EnableNetworkConfiguration=false. If it does, change it to:
+
+    [General]
+    EnableNetworkConfiguration=true
+
+    If the section or option doesn’t exist, add the [General] section with the EnableNetworkConfiguration=true line.
+
+    After making changes to the configuration file, restart the iwd service:
+
+
+sudo systemctl restart iwd
+sudo systemctl status iwd
+
+
+--- This is for if the devices show power off
+sudo iwctl device wlan0 set-property Powered on
+sudo iwctl device wlan1 set-property Powered on
+
 // Useful commands for iwd 
 
 iwctl
