@@ -12,7 +12,7 @@ neofetch
 # History settings
 HISTCONTROL=ignoreboth
 shopt -s histappend
-HISTSIZE=5000
+HISTSIZE=10000
 HISTFILESIZE=10000
 
 # Shell options
@@ -35,11 +35,12 @@ alias la='ls -A'
 alias l='ls -CF'
 alias q='exit'
 alias e='exec bash'
-alias r='reboot'
+alias rs='reboot'
 alias k='pkill'
 alias f='fd'
 alias g='rg'
 alias n='nvim'
+alias ss='shutdown -h now'
 
 # Useful functions
 mkcd() { mkdir -p "$1" && cd "$1"; }
