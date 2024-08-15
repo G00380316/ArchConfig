@@ -156,7 +156,8 @@ sudo pacman -S --noconfirm wl-clipboard
 # To Screen-Capture Obs
 sudo pacman -S --noconfirm ffmpeg
 
-sudo pacman -S --noconfirm nvidia
+# Nvidia Setup
+sudo pacman -S --noconfirm nvidia nvidia-utils egl-wayland
 
 # This package provides integration for Wayland applications to access desktop services.
 sudo pacman -S --noconfirm xdg-desktop-portal-wlr

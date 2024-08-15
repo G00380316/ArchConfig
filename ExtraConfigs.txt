@@ -36,6 +36,24 @@ cargo build --release
 
 now after this it should be working waybar fully with clickable buttons on the left hand side I advise looking at .bashrc to make sure some variables are the right ones for your system and also hyprland.conf
 
-So you might run into a problem with the rust binary jsut make sure you export its path in ".bash_profile" and it should work fine 
+So you might run into a problem with the rust binary just make sure you export its path in ".bash_profile" and it should work fine 
+
+For the nividia setup I will add the command to build and will just give you the files to then move to directories or you can use the commands and text to input into files below or the screenshot and use files as an example
+
+sudo nano /etc/mkinitcpio.conf
+
+MODULES=(... nvidia nvidia_modeset nvidia_uvm nvidia_drm ...)
+
+^^^ Paste this the text in between the dots in the module array in your file and if you already have modules in the array just leave a space and then paste 
+
+sudo nano /etc/modprobe.d/nvidia.conf
+
+options nvidia_drm modeset=1 fbdev=1
+
+^^^ Paste this into the conf file then run the command below to build the conf file
+
+sudo mkinitcpio -P
+
+and then reboot
 
 After this I can't really remember if there is anymore so if there is please notify and I will tell you what to do on ezea128@gmail.com
