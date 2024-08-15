@@ -54,6 +54,8 @@ options nvidia_drm modeset=1 fbdev=1
 
 sudo mkinitcpio -P
 
+// NOTE: For me when I tested it out flathub apps took long to load and high cpu usage so might only for external gpu not laptop gpus but try with yours you can always remove the modules and then build again
+
 and then reboot
 
 After this I can't really remember if there is anymore so if there is please notify and I will tell you what to do on ezea128@gmail.com
