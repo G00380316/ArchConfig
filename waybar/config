@@ -102,7 +102,7 @@
         "format-wifi": " ",
         //"format-ethernet": "  {ifname}",
         "format-ethernet": "󰈀",
-        "format-disconnected": "\uddaa",
+        "format-disconnected": " ",
         "tooltip-format": " {ifname} via {gwaddri}",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
