@@ -1,0 +1,20 @@
+So I put potential fixes for flathub/flatpak apps through flatSeal and I'm not sure if this may work with them or its like the same thing but this I found
+From downloading google chrome of the Arch Repositories using AUR Helper using "yay -S 'app-name'" the app was Google Chrome for reference 
+
+so I installed it by "yay -S google-chrome" and when I ran goodle-chrome-stable it came up blurry. 
+
+google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+
+then figured out by running the line above I can use the wayland backend to run the application then next is to edit the desktop app file '.desktop' to exec
+this line on open so these are the steps you can try this on any desktop apps to see you can fix the blur
+
+'.desktop' files are usually in this directory "/usr/share/applications/"
+
+sudo nano /usr/share/applications/google-chrome.desktop
+
+so probably best to use nano and edit it find the exec and then add this line instead 
+
+Exec=/usr/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland %U
+
+ctrl + x to save and then use enter to confirm but keep in mind the name varies for each app and if there is more needed fixes for blurry Apps I will add here 
+
