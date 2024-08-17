@@ -16,5 +16,4 @@ so probably best to use nano and edit it find the exec and then add this line in
 
 Exec=/usr/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland %U
 
-ctrl + x to save and then use enter to confirm but keep in mind the name varies for each app and if there is more needed fixes for blurry Apps I will add here 
-
+ctrl + x to save and then use enter to confirm but keep in mind the name varies for each app and if there is more needed fixes for blurry Apps I will add here

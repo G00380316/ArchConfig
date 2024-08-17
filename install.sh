@@ -147,6 +147,9 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
         #exit 1
     fi
 
+# AUR apps
+yay -S --noconfirm betterbird-bin
+
 # Cleaning Utility
 sudo pacman -S --noconfirm bleachbit
 
