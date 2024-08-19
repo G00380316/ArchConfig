@@ -149,6 +149,16 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
 
 # AUR apps
 yay -S --noconfirm betterbird-bin
+yay -S --noconfirm onedrive-abraunegg
+# Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland 
+# yay -S --noconfirm microsoft-edge-stable-bin 
+# yay -S --noconfirm google-chrome
+
+# Command-line Image viewer
+sudo pacman -S feh
+
+# Command-line PDF viewer
+sudo pacman -S --noconfirm zathura zathura-pdf-mupdf
 
 # Cleaning Utility
 sudo pacman -S --noconfirm bleachbit
