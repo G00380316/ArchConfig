@@ -186,7 +186,6 @@ sudo pacman -S --noconfirm php lua
 echo "Installing Flatpak and Obsidian..."
 sudo pacman -S --noconfirm flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y org.mozilla.Thunderbird
 flatpak install vesktop -y
 flatpak install dbgate -y
 flatpak install obsidian -y
@@ -196,10 +195,12 @@ flatpak install flathub org.moneymanagerex.MMEX -y
 flatpak install flathub dev.bragefuglseth.Keypunch -y
 flatpak install flathub net.lugsole.bible_gui -y
 flatpak install flathub com.usebruno.Bruno -y
+flatpak install flathub com.usebottles.bottles -y
+flatpak install flathub org.onlyoffice.desktopeditors -y
 #flatpak install flathub io.appflowy.AppFlowy -y
 #flatpak install flathub org.kde.minuet -y
 
-# Important we use flatseal to manager our flatpak apps (Cuase sometimes they don't render properly)
+# Important we use flatseal to manager our flatpak apps (Cuase sometimes they don't render properly) [Issue was scaling make sure you dont change your scale from 1]
 flatpak install flatseal -y 
 
 # Extras
