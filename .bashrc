@@ -42,6 +42,9 @@ alias g='rg'
 alias n='nvim'
 alias ss='shutdown -h now'
 alias vp='zathura'
+alias vi='feh'
+alias yt='yt-dlp'
+alias calc='bc'
 
 # Useful functions
 mkcd() { mkdir -p "$1" && cd "$1"; }
