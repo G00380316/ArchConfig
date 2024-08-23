@@ -26,8 +26,14 @@ sudo nano /etc/iwd/main.conf
 
 --- Look for a [General] section and ensure it doesn't contain EnableNetworkConfiguration=false. If it does, change it to:
 
-    [General]
-    EnableNetworkConfiguration=true
+      [General]
+      EnableNetworkConfiguration=true
+      DisablePowerSave=true
+      AddressRandomization=none
+
+      [Network]
+      NameResolvingService=systemd
+      IP6PrivacyExtensions=false
 
     If the section or option doesn’t exist, add the [General] section with the EnableNetworkConfiguration=true line.
 
@@ -51,3 +57,111 @@ station wlan0 show
 station wlan0 scan
 station wlan0 get-networks
 station wlan0 connect "ROUTER_SSID"
+
+                               iwctl version 2.19                              
+--------------------------------------------------------------------------------
+  Usage
+--------------------------------------------------------------------------------
+  iwctl [--options] [commands]
+
+                               Available options                               
+--------------------------------------------------------------------------------
+  Options                                             Description                 
+--------------------------------------------------------------------------------
+  --username                                          Provide username
+  --password                                          Provide password
+  --passphrase                                        Provide passphrase
+  --dont-ask                                          Don't ask for missing
+						     credentials
+  --help                                              Display help
+
+                               Available commands                              
+--------------------------------------------------------------------------------
+  Commands                                            Description                 
+--------------------------------------------------------------------------------
+
+Adapters:
+  adapter list                                        List adapters                   
+  adapter <phy> show                                  Show adapter info               
+  adapter <phy> set-property <name> <value>           Set property                    
+
+Ad-Hoc:
+  ad-hoc list                                         List devices in Ad-hoc mode     
+  ad-hoc <wlan> start <"network name"> <passphrase>   Start or join an existing       
+                                                      Ad-Hoc network called "network   
+                                                      name" with a passphrase         
+  ad-hoc <wlan> start_open <"network name">           Start or join an existing open   
+                                                      Ad-Hoc network called "network   
+                                                      name"                           
+  ad-hoc <wlan> stop                                  Leave an Ad-Hoc network         
+
+Access Point:
+  ap list                                             List devices in AP mode         
+  ap <wlan> start <"network name"> <passphrase>       Start an access point called    
+                                                      "network name" with a           
+                                                      passphrase                      
+  ap <wlan> start-profile <"network name">            Start an access point based on   
+                                                      a disk profile                  
+  ap <wlan> stop                                      Stop a started access point     
+  ap <wlan> show                                      Show AP info                    
+  ap <wlan> scan                                      Start an AP scan                
+  ap <wlan> get-networks                              Get network list after          
+                                                      scanning                        
+
+Devices:
+  device list                                         List devices                    
+  device <wlan> show                                  Show device info                
+  device <wlan> set-property <name> <value>           Set property                    
+
+Known Networks:
+  known-networks list                                 List known networks             
+  known-networks <"network name"> forget              Forget known network            
+  known-networks <"network name"> show                Show known network              
+  known-networks <"network name"> set-property        Set property                    
+      <name> <value>                                                                  
+
+WiFi Simple Configuration:
+  wsc list                                            List WSC-capable devices        
+  wsc <wlan> push-button                              PushButton mode                 
+  wsc <wlan> start-user-pin <PIN>                     PIN mode                        
+  wsc <wlan> start-pin                                PIN mode with generated 8       
+                                                      digit PIN                       
+  wsc <wlan> cancel                                   Aborts WSC operations           
+
+Station:
+  station list                                        List devices in Station mode    
+  station <wlan> connect <"network name"> [security]  Connect to network              
+  station <wlan> connect-hidden <"network name">      Connect to hidden network       
+  station <wlan> disconnect                           Disconnect                      
+  station <wlan> get-networks [rssi-dbms/rssi-bars]   Get networks                    
+  station <wlan> get-hidden-access-points             Get hidden APs                  
+      [rssi-dbms]                                                                     
+  station <wlan> scan                                 Scan for networks               
+  station <wlan> show                                 Show station info               
+
+Device Provisioning:
+  dpp list                                            List DPP-capable devices        
+  dpp <wlan> start-enrollee                           Starts a DPP Enrollee           
+  dpp <wlan> start-configurator                       Starts a DPP Configurator       
+  dpp <wlan> stop                                     Aborts DPP operations           
+  dpp <wlan> show                                     Shows the DPP state             
+
+Shared Code Device Provisioning (PKEX):
+  pkex list                                           List shared code capable        
+                                                      devices                         
+  pkex <wlan> stop                                    Aborts shared code operations   
+  pkex <wlan> show                                    Shows the shared code state     
+  pkex <wlan> enroll key [identifier]                 Start a shared code enrollee    
+  pkex <wlan> configure key [identifier]              Start a shared code             
+                                                      configurator                    
+
+Station Debug:
+  debug <wlan> connect <bssid>                        Connect to a specific BSS       
+  debug <wlan> roam <bssid>                           Roam to a BSS                   
+  debug <wlan> get-networks                           Get networks                    
+  debug <wlan> autoconnect on|off                     Set AutoConnect property        
+
+
+Miscellaneous:
+  version                                             Display version                 
+  quit                                                Quit program
