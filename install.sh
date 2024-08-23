@@ -42,7 +42,7 @@ if [ "$EUID" -ne 0 ]; then
     # Install swww using yay
     echo "Installing swww..."
     yay -S --noconfirm swww
-    sudo pacman -S --noconfirm unzip
+    sudo pacman -S --noconfirm unzip unrar
 
         # Install JetBrains Nerd Font
         echo "Installing JetBrains Nerd Font..."
@@ -170,7 +170,7 @@ sudo pacman -S --noconfirm wl-clipboard
 sudo pacman -S --noconfirm ffmpeg
 
 # Nvidia Setup
-sudo pacman -S --noconfirm nvidia nvidia-utils egl-wayland
+sudo pacman -S --noconfirm nvidia nvidia-utils egl-wayland nvidia-settings wayland-utils vulkan-tools
 
 # This package provides integration for Wayland applications to access desktop services.
 sudo pacman -S --noconfirm xdg-desktop-portal-wlr

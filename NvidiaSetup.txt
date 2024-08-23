@@ -1,0 +1,48 @@
+3. Setup nvidia-drm.modeset=1 for KMS (Kernel Mode Setting)
+
+To avoid screen tearing and enable proper rendering, enable kernel mode setting (KMS) for the NVIDIA driver. This is crucial for Wayland compositors like Hyprland.
+
+    Edit the bootloader configuration:
+
+    For GRUB, add nvidia-drm.modeset=1 to the GRUB_CMDLINE_LINUX_DEFAULT line in /etc/default/grub. Example:
+
+    bash
+
+sudo nano /etc/default/grub
+
+Modify the line like this:
+
+makefile
+
+"Paste this"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nvidia-drm.modeset=1"
+
+Update GRUB:
+After editing, update GRUB:
+
+bash
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+Enable the DRM Kernel Module:
+Create or edit the /etc/modprobe.d/nvidia.conf file:
+
+bash
+
+sudo nano /etc/modprobe.d/nvidia.conf
+
+Add the following line to enable KMS:
+
+"Paste this"
+options nvidia-drm modeset=1
+
+Reboot the system:
+Reboot for the changes to take effect:
+
+bash
+
+    sudo reboot
+
+
+// Test by running this in term and then running "nvidia-smi"
+vkcube &
