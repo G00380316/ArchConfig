@@ -112,6 +112,9 @@ sudo pacman -Syu --noconfirm
 # Development Tools
 echo "Installing basic development tools..."
 sudo pacman -S --noconfirm base-devel curl git github-cli wget lazygit gcc jdk-openjdk ruby
+# Install PHP and Lua
+echo "Installing PHP and Lua..."
+sudo pacman -S --noconfirm php lua
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
@@ -178,9 +181,8 @@ sudo pacman -S --noconfirm xdg-desktop-portal-wlr
 # This package allows you to create virtual video devices and is often used for streaming or video processing applications.
 sudo pacman -S --noconfirm v4l2loopback-dkms
 
-# Install PHP and Lua
-echo "Installing PHP and Lua..."
-sudo pacman -S --noconfirm php lua
+# This is a Notification daemon
+sudo pacman -S --noconfirm dunst
 
 # Install Flatpak and Obsidian,Vesktop,Postman,DbGate,...etc
 echo "Installing Flatpak and Obsidian..."
@@ -197,6 +199,8 @@ flatpak install flathub net.lugsole.bible_gui -y
 flatpak install flathub com.usebruno.Bruno -y
 flatpak install flathub com.usebottles.bottles -y
 flatpak install flathub org.onlyoffice.desktopeditors -y
+# This is an awesome Sound App equivalent to Nahimic / Doldby Atmos
+flatpak install flathub me.timschneeberger.jdsp4linux -y
 #flatpak install flathub io.appflowy.AppFlowy -y
 #flatpak install flathub org.kde.minuet -y
 

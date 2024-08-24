@@ -189,3 +189,5 @@ station <device> disconnect
 
 NOTE: Configure your /.config/hyper/hyprland.conf to run things
       that need to be executed at the start of boot and don't forget to login into your github by running "gh auth login"
+
+Move dunst folder to suppress notifications from OneDrive or you can add another app as will to the config just use Onedrive as an reference

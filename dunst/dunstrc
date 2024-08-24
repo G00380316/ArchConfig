@@ -1,0 +1,7 @@
+[rule]
+appname = "OneDrive"
+urgency = "low"
+
+[urgency_low]
+format = ""
+
