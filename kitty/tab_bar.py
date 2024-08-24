@@ -10,7 +10,14 @@ from kitty.tab_bar import (
     TabBarData
 )
 
-ICON = "   "
+#ICON = "   "
+#ICON = " 󰇹 "
+#ICON = "  "
+#ICON = "  "
+#ICON = "   "
+#ICON = " 󰬌 "
+ICON = " 󰬰 "
+#ICON = "  "
 ICON_FG = as_rgb(color_as_int(Color(78, 81, 82)))
 ICON_BG = as_rgb(color_as_int(Color(157, 205, 105)))
 

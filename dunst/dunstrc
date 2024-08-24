@@ -1,7 +1,9 @@
 [rule]
 appname = "OneDrive"
 urgency = "low"
-
-[urgency_low]
+timeout = 0
 format = ""
 
+[urgency_low]
+timeout = 0
+format = ""
