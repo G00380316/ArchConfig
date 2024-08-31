@@ -200,7 +200,7 @@ flatpak install flathub com.usebruno.Bruno -y
 flatpak install flathub com.usebottles.bottles -y
 flatpak install flathub org.onlyoffice.desktopeditors -y
 # This is an awesome Sound App equivalent to Nahimic / Doldby Atmos
-flatpak install flathub me.timschneeberger.jdsp4linux -y
+#flatpak install flathub me.timschneeberger.jdsp4linux -y
 #flatpak install flathub io.appflowy.AppFlowy -y
 #flatpak install flathub org.kde.minuet -y
 
