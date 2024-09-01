@@ -116,6 +116,11 @@ sudo pacman -S --noconfirm base-devel curl git github-cli wget lazygit gcc jdk-o
 echo "Installing PHP and Lua..."
 sudo pacman -S --noconfirm php lua
 
+# Internet configuration
+echo "Installing Internet Modules" 
+sudo pacman -S --noconfirm iwd dhclient usbmuxd ifuse libimobiledevice
+sudo systemctl start usbmuxd
+
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
 sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
