@@ -75,6 +75,7 @@ alias fp='fzf --preview="bat --color=always {}"'
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
+alias lt='tmux attach-session -t "$(tmux ls | tail -n1 | cut -d: -f1)"'
 
 # Add in snippets
 zinit snippet OMZP::git
@@ -90,7 +91,7 @@ bindkey '^R' fzf-history-widget
 bindkey '^E' fzf-file-widget
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey -e 
+bindkey -e
 
 ### Useful functions ###
 #
@@ -160,6 +161,20 @@ source "$HOME/.cargo/env"
 ### Tools ###
 #
 # FZF Configuration
+
+# Define the fzf installation path
+FZF_HOME="${HOME}/.fzf"
+
+# Check if fzf is installed; if not, clone and install it
+if [ ! -d "$FZF_HOME" ]; then
+  echo "fzf not found. Installing fzf..."
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$FZF_HOME"
+  "$FZF_HOME/install" --all
+fi
+
+# Source fzf key bindings and fuzzy completion if it exists
+#[ -f "$FZF_HOME/fzf.zsh" ] && source "$FZF_HOME/fzf.zsh"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
