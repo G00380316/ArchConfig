@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh 
 
 # Run First without root if yay not installed
 
@@ -18,6 +18,9 @@ if [ "$EUID" -ne 0 ]; then
     git clone https://github.com/G00380316/nvim.git
     mv nvim $HOME/.config
 
+    echo "Cloning tpm for tmux configuration..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
     # My Preferred Folders
     cd $HOME
     dircolors -p > ~/.dircolors
@@ -29,10 +32,10 @@ if [ "$EUID" -ne 0 ]; then
     # Move application config folders to .config
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
-    mv .bashrc "$HOME"
-    mv .bash_profile "$HOME"
-    mv .poshthemes "$HOME"
+    mv .zshrc "$HOME"
+    mv .p10k.zsh "$HOME"
     mv Pictures "$HOME/"
+    mv tmux "$HOME/.config/"
     mv firefox "$HOME/.config/"
     mv waybar "$HOME/.config/"
     mv wofi "$HOME/.config/"
@@ -64,27 +67,22 @@ if [ "$EUID" -ne 0 ]; then
         cd $HOME/ArchConfig
         mv JetBrainsMono $HOME/.local/share/fonts/
         fc-cache -fv
-   
-       # Installing oh my posh using yay
-       echo "Installing oh my posh..."
-       yay -S --noconfirm oh-my-posh-bin
-        
 
         # Install Python using pyenv
         echo "Installing pyenv and Python..."
-        curl https://pyenv.run | bash
-        echo -e '\n# Pyenv configuration' >> ~/.bashrc
-        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
-        echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-        echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-        source ~/.bashrc
+        curl https://pyenv.run | zsh 
+        echo -e '\n# Pyenv configuration' >> ~/.zshrc
+        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc 
+        echo 'eval "$(pyenv init --path)"' >> ~/.zshrc 
+        echo 'eval "$(pyenv init -)"' >> ~/.zshrc 
+        source ~/.zshrc 
         pyenv install 3.11.4
         pyenv global 3.11.4
         pip install -U hyfetch
 
         # Install Node.js using nvm
         echo "Installing nvm and Node.js..."
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh 
         source ~/.nvm/nvm.sh
         nvm install node
         nvm use node
@@ -93,14 +91,14 @@ if [ "$EUID" -ne 0 ]; then
         echo "Installing Go..."
         wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz
         sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
-        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-        source ~/.bashrc
+        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc 
+        source ~/.zshrc 
 
         # Install Rust
         echo "Installing Rust..."
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         source ~/.cargo/env
-        source ~/.bashrc
+        source ~/.zshrc 
         rustup update
     exit
 fi
@@ -158,10 +156,13 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
 # AUR apps
 yay -S --noconfirm betterbird-bin
 yay -S --noconfirm onedrive-abraunegg
+yay -S --noconfirm fzf bat
 # Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland 
-# yay -S --noconfirm microsoft-edge-stable-bin 
-# yay -S --noconfirm google-chrome
+yay -S --noconfirm microsoft-edge-stable-bin 
+yay -S --noconfirm google-chrome
 
+# Productivity 
+sudo pacman -S --noconfirm zoxide tmux 
 # Command-line Image viewer
 sudo pacman -S feh
 
