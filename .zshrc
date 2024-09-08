@@ -76,6 +76,7 @@ alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
 alias lt='tmux attach-session -t "$(tmux ls | tail -n1 | cut -d: -f1)"'
+alias t='tmux'
 
 # Add in snippets
 zinit snippet OMZP::git
