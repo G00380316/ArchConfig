@@ -36,6 +36,7 @@ if [ "$EUID" -ne 0 ]; then
     mv .zshrc "$HOME"
     mv .p10k.zsh "$HOME"
     mv Pictures "$HOME/"
+    mv scripts "$HOME/.config/"
     mv tmux "$HOME/.config/"
     mv firefox "$HOME/.config/"
     mv waybar "$HOME/.config/"
