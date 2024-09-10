@@ -172,6 +172,9 @@ sudo pacman -S --noconfirm zathura zathura-pdf-mupdf
 # Cleaning Utility
 sudo pacman -S --noconfirm bleachbit
 
+# Cleaning Utility
+sudo pacman -S --noconfirm i7z
+
 # Clipboard manager
 sudo pacman -S --noconfirm wl-clipboard
 
