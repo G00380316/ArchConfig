@@ -39,7 +39,7 @@ zinit light Aloxaf/fzf-tab
 
 # Terminal Styling
 cat .nf 2> /dev/null
-setsid neofetch >| .nf
+setsid neofetch >| ~/.nf
 
 # History
 HISTSIZE=10000
