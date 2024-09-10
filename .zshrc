@@ -80,6 +80,7 @@ alias lt='tmux attach-session -t "$(tmux ls | tail -n1 | cut -d: -f1)"'
 alias t='tmux'
 alias s='source'
 alias lg='lazygit'
+alias doc='~/.config/scripts/cht.sh'
 
 # Add in snippets
 zinit snippet OMZP::git

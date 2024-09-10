@@ -11,4 +11,4 @@ else
 	cmd="curl cht.sh/$selected~$query"
 fi
 
-tmux neww zsh -c "$cmd & while [ : ]; do sleep 2; done"
+tmux neww zsh -c "$cmd & while [ : ]; do sleep 1; done"
