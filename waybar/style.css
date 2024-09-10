@@ -1,11 +1,11 @@
 * {
-  font-size: 18px;
-  font-family: "HackNerdFont";
+    font-size: 18px;
+    font-family: "HackNerdFont";
 }
 
 window#waybar {
-  background: transparent;
-  color: #fdf6e3;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fdf6e3;
 }
 
 #clock,
@@ -17,102 +17,93 @@ window#waybar {
 #disk,
 #custom-pomodoro,
 #network {
-  /*background: #1a1a1a;*/
-  background-color: rgba(0, 0, 0, 0.6);
-  /* Semi-transparent black background */
-  border-radius: 10px;
-  /* Rounded corners */
-  border: 0.85px solid;
-  margin: 0px 10px;
-  margin-top: 5px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-  /* Subtle shadow for depth */
+    margin-right: 8px;
+    padding: 0 12px;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+#clock {
+    background-color: rgba(25, 25, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #workspaces,
 #tray {
-  margin: 0px 20px;
-  margin-top: 5px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-  /* Subtle shadow for depth */
+    margin: 0px 15px;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 #workspaces button {
-  padding: 0 2px;
-  color: #555555;
+    padding: 5px 8px;
+    color: #aaaaaa;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease;
 }
 
 #workspaces button.active {
-  color: #ffffff;
+    color: #ffffff;
+    background-color: #a29bfe;
 }
 
 #workspaces button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-}
-
-#workspaces button:hover {
-  background: #1a1a1a;
-  border: #1a1a1a;
-  padding: 0 3px;
+    background-color: rgba(162, 155, 254, 0.3);
+    box-shadow: 0px 3px 8px rgba(162, 155, 254, 0.5);
+    color: #aaaaaa;
 }
 
 #pulseaudio {
-  color: #2aa198;
+    color: #2aa198;
 }
 
 #backlight {
-  color: #268bd2;
+    color: #268bd2;
 }
 
 #memory {
-  color: #2aa198;
+    color: #2aa198;
 }
 
 #cpu {
-  color: #6c71c4;
+    color: #6c71c4;
 }
 
 #custom-pomodoro.work {
-  color: #ff474c;
+    color: #ff5c5c;
 }
 
 #custom-pomodoro.break {
-  color: #d3b683;
+    color: #ffcc80;
 }
 
 #battery {
-  color: #859900;
+    color: #859900;
 }
 
 #battery.warning {
-  color: #ffa500;
+    color: #ffa500;
 }
 
 #battery.critical {
-  color: #ff0000;
+    color: #ff0000;
 }
 
 #disk {
-  color: #b58900;
+    color: #b58900;
 }
 
 #network {
-  color: #6c71c4;
+    color: #6c71c4;
 }
 
 #network.disconnected {
-  color: #ff0000;
+    color: #ff0000;
 }
 
-#clock,
-#pulseaudio,
-#backlight,
-#memory,
-#cpu,
-#network,
-#custom-pomodoro,
-#battery,
-#disk {
-  padding: 0 10px;
+#workspaces button:focus,
+#tray:focus {
+    outline: none;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.5);
 }

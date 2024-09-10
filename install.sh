@@ -32,6 +32,7 @@ if [ "$EUID" -ne 0 ]; then
     # Move application config folders to .config
     echo "Moving configuration folders to .config directory..."
     cd ArchConfig
+    mv .zshenv "$HOME"
     mv .zshrc "$HOME"
     mv .p10k.zsh "$HOME"
     mv Pictures "$HOME/"
