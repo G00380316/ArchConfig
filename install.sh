@@ -118,8 +118,16 @@ sudo pacman -S --noconfirm php lua
 
 # Internet configuration
 echo "Installing Internet Modules" 
+# This is for Iphones(Ifuse is the module that mounts ifuse /path/to/mount/point) 
 sudo pacman -S --noconfirm iwd dhclient usbmuxd ifuse libimobiledevice
+# This is for Android 
+sudo modprobe rndis_host
+sudo modprobe cdc_ether
+sudo modprobe usbnet
 sudo systemctl start usbmuxd
+
+# Adds Support to mount Android devices(mtpfs is the module that mounts mtpfs /path/to/mount/point)
+sudo pacman -S --noconfirm gvfs-mtp mtpfs
 
 # Browsing and Other Applications
 echo "Installing Firefox, Waybar, Neovim, and OBS Studio..."
