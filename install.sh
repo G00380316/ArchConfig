@@ -1,4 +1,4 @@
-#!/bin/zsh 
+#!/bin/zsh
 
 # Run First without root if yay not installed
 
@@ -72,19 +72,19 @@ if [ "$EUID" -ne 0 ]; then
 
         # Install Python using pyenv
         echo "Installing pyenv and Python..."
-        curl https://pyenv.run | zsh 
+        curl https://pyenv.run | zsh
         echo -e '\n# Pyenv configuration' >> ~/.zshrc
-        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc 
-        echo 'eval "$(pyenv init --path)"' >> ~/.zshrc 
-        echo 'eval "$(pyenv init -)"' >> ~/.zshrc 
-        source ~/.zshrc 
+        echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc
+        echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
+        echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+        source ~/.zshrc
         pyenv install 3.11.4
         pyenv global 3.11.4
         pip install -U hyfetch
 
         # Install Node.js using nvm
         echo "Installing nvm and Node.js..."
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh 
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
         source ~/.nvm/nvm.sh
         nvm install node
         nvm use node
@@ -93,14 +93,14 @@ if [ "$EUID" -ne 0 ]; then
         echo "Installing Go..."
         wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz
         sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
-        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc 
-        source ~/.zshrc 
+        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
+        source ~/.zshrc
 
         # Install Rust
         echo "Installing Rust..."
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         source ~/.cargo/env
-        source ~/.zshrc 
+        source ~/.zshrc
         rustup update
     exit
 fi
@@ -117,10 +117,10 @@ echo "Installing PHP and Lua..."
 sudo pacman -S --noconfirm php lua
 
 # Internet configuration
-echo "Installing Internet Modules" 
-# This is for Iphones(Ifuse is the module that mounts ifuse /path/to/mount/point) 
+echo "Installing Internet Modules"
+# This is for Iphones(Ifuse is the module that mounts ifuse /path/to/mount/point)
 sudo pacman -S --noconfirm iwd dhclient usbmuxd ifuse libimobiledevice
-# This is for Android 
+# This is for Android
 sudo modprobe rndis_host
 sudo modprobe cdc_ether
 sudo modprobe usbnet
@@ -167,12 +167,12 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
 yay -S --noconfirm betterbird-bin
 yay -S --noconfirm onedrive-abraunegg
 yay -S --noconfirm fzf bat
-# Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland 
-yay -S --noconfirm microsoft-edge-stable-bin 
+# Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland
+yay -S --noconfirm microsoft-edge-stable-bin
 yay -S --noconfirm google-chrome
 
-# Productivity 
-sudo pacman -S --noconfirm zoxide tmux 
+# Productivity
+sudo pacman -S --noconfirm zoxide tmux
 # Command-line Image viewer
 sudo pacman -S feh
 
@@ -218,13 +218,15 @@ flatpak install flathub net.lugsole.bible_gui -y
 flatpak install flathub com.usebruno.Bruno -y
 flatpak install flathub com.usebottles.bottles -y
 flatpak install flathub org.onlyoffice.desktopeditors -y
+# Still testing
+flatpak install flathub org.gnome.Boxes -y
 # This is an awesome Sound App equivalent to Nahimic / Doldby Atmos
 #flatpak install flathub me.timschneeberger.jdsp4linux -y
 #flatpak install flathub io.appflowy.AppFlowy -y
 #flatpak install flathub org.kde.minuet -y
 
 # Important we use flatseal to manager our flatpak apps (Cuase sometimes they don't render properly) [Issue was scaling make sure you dont change your scale from 1]
-flatpak install flatseal -y 
+flatpak install flatseal -y
 
 # Extras
 
@@ -260,7 +262,7 @@ sudo pacman -S --noconfirm pipewire pipewire-pulse pipewire-jack
 sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
 sudo pacman -S --noconfirm blueman
 sudo pacman -S --noconfirm bluez bluez-utils
-# Might break install hasn't been tested so if any errors remove and run on your own after 
+# Might break install hasn't been tested so if any errors remove and run on your own after
 sudo systemctl --user enable --now pipewire pipewire-pulse
 
 # Clean up
