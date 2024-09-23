@@ -131,11 +131,18 @@ extract() {
 ### Terminal Styling ###
 #
 # Set terminal title
-case "$TERM" in
-    xterm*|rxvt*)
-        precmd() { print -Pn "\e]0;%n@%m: %~\a" }
-        ;;
-esac
+precmd() {
+  if [[ -n "$NVIM" ]]; then
+    # In Neovim
+    echo -ne "\033]0;Neovim: ${PWD##*/}\007"
+  elif [[ "$TERM" =~ screen* ]]; then
+    # In tmux or screen
+    echo -ne "\033k${HOST%%.*}: ${PWD##*/}\033\\"
+  else
+    # Default behavior for normal terminal
+    echo -ne "\033]0;${HOST%%.*}: ${PWD##*/}\007"
+  fi
+}
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
