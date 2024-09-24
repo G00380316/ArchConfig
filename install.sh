@@ -174,7 +174,7 @@ yay -S --noconfirm google-chrome
 # Productivity
 sudo pacman -S --noconfirm zoxide tmux
 # Command-line Image viewer
-sudo pacman -S feh
+sudo pacman -S --noconfirm feh
 
 # Command-line PDF viewer
 sudo pacman -S --noconfirm zathura zathura-pdf-mupdf
