@@ -62,7 +62,7 @@ alias q='exit'
 alias e='exec zsh'
 alias rs='reboot'
 alias k='pkill'
-alias g='rg'
+alias search='rg'
 alias n='nvim'
 alias ni='nvim $(fzf --preview="bat --color=always {}")'
 alias ss='shutdown -h now'
@@ -201,6 +201,10 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Rust Waybar module
 export PATH="$HOME/.config/waybar/waybar-module-pomodoro/target/release:$PATH"
+
+# SideLoader
+export PATH="/home/enoch/Documents/Applications/Sideloader/Working Binaries:$PATH"
+alias sideloader='sideloader-cli-x86_64-linux-gnu'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
