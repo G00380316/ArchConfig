@@ -170,6 +170,7 @@ yay -S --noconfirm fzf bat
 # Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland
 yay -S --noconfirm microsoft-edge-stable-bin
 yay -S --noconfirm google-chrome
+yay -S --noconfirm anki-bin # Note that you might have to pip install modules to get it to work!!!
 
 # Productivity
 sudo pacman -S --noconfirm zoxide tmux
