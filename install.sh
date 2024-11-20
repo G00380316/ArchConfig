@@ -43,6 +43,7 @@ if [ "$EUID" -ne 0 ]; then
     mv wofi "$HOME/.config/"
     mv ly "$HOME/.config/"
     mv neofetch "$HOME/.config/"
+    mv tofi "$HOME/.config/"
 
     # Install swww using yay
     echo "Installing swww..."
