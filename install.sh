@@ -130,6 +130,9 @@ sudo pacman -S --noconfirm meson scdoc wayland-protocols
 # File-Manager 
 sudo pacman -S --noconfirm thunar
 xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+sudo pacman -S --noconfirm  thunar-archive-plugin thunar-media-tags-plugin
+sudo pacman -S --noconfirm xfdesktop
+xfdesktop --load
 sudo pacman -R --noconfirm dolphin
 
 # Internet configuration
@@ -184,6 +187,9 @@ yay -S --noconfirm betterbird-bin
 yay -S --noconfirm onedrive-abraunegg
 yay -S --noconfirm fzf bat
 yay -S --noconfirm tofi
+yay -R --noconfirm wofi
+yay -S --noconfirm arc-gtx-theme
+yay -S --noconfirm papirus-icon-theme
 systemctl --user daemon-reload
 systemctl --user restart xdg-desktop-portal-wlr.service
 
