@@ -40,10 +40,14 @@ if [ "$EUID" -ne 0 ]; then
     mv tmux "$HOME/.config/"
     mv firefox "$HOME/.config/"
     mv waybar "$HOME/.config/"
-    mv wofi "$HOME/.config/"
     mv ly "$HOME/.config/"
     mv neofetch "$HOME/.config/"
     mv tofi "$HOME/.config/"
+    mv Thunar "$HOME/.config/"
+    mv vlc "$HOME/.config/"
+    mv onedrive "$HOME/.config/"
+    mv xfce4 "$HOME/.config/"
+    mv systemd "$HOME/.config/"
 
     # Install swww using yay
     echo "Installing swww..."
@@ -123,6 +127,11 @@ sudo pacman -S --noconfirm freetype2 harfbuzz cairo pango wayland libxkbcommon
 # Build-time dependencies
 sudo pacman -S --noconfirm meson scdoc wayland-protocols
 
+# File-Manager 
+sudo pacman -S --noconfirm thunar
+xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+sudo pacman -R --noconfirm dolphin
+
 # Internet configuration
 echo "Installing Internet Modules"
 # This is for Iphones(Ifuse is the module that mounts ifuse /path/to/mount/point)
@@ -175,6 +184,9 @@ yay -S --noconfirm betterbird-bin
 yay -S --noconfirm onedrive-abraunegg
 yay -S --noconfirm fzf bat
 yay -S --noconfirm tofi
+systemctl --user daemon-reload
+systemctl --user restart xdg-desktop-portal-wlr.service
+
 # Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland
 yay -S --noconfirm microsoft-edge-stable-bin
 yay -S --noconfirm google-chrome
