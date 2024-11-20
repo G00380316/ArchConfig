@@ -116,6 +116,12 @@ sudo pacman -S --noconfirm base-devel curl git github-cli wget lazygit gcc jdk-o
 echo "Installing PHP and Lua..."
 sudo pacman -S --noconfirm php lua
 
+# Runtime dependencies
+sudo pacman -S --noconfirm freetype2 harfbuzz cairo pango wayland libxkbcommon
+
+# Build-time dependencies
+sudo pacman -S --noconfirm meson scdoc wayland-protocols
+
 # Internet configuration
 echo "Installing Internet Modules"
 # This is for Iphones(Ifuse is the module that mounts ifuse /path/to/mount/point)
@@ -167,6 +173,7 @@ sudo pacman -S --noconfirm firefox waybar neovim obs-studio neofetch
 yay -S --noconfirm betterbird-bin
 yay -S --noconfirm onedrive-abraunegg
 yay -S --noconfirm fzf bat
+yay -S --noconfirm tofi
 # Unhighlight if you want to install just don't forget to configure the graphical backend if your on wayland
 yay -S --noconfirm microsoft-edge-stable-bin
 yay -S --noconfirm google-chrome
