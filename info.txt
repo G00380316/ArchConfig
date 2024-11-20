@@ -191,3 +191,33 @@ NOTE: Configure your /.config/hyper/hyprland.conf to run things
       that need to be executed at the start of boot and don't forget to login into your github by running "gh auth login"
 
 Move dunst folder to suppress notifications from OneDrive or you can add another app as will to the config just use Onedrive as an reference
+
+To check how you installed a package
+
+To check how mpv was installed on your Arch Linux system, you can use the following methods:
+
+    Check the Package Manager: Run the following command to check if mpv is installed through pacman (the default package manager in Arch Linux):
+
+pacman -Qi mpv
+
+This will provide information about the package, including whether it was installed via pacman.
+
+Check for Snap or Flatpak: If it wasn't installed via pacman, you might have installed it using Snap or Flatpak. Check these with:
+
+    For Snap:
+
+snap list mpv
+
+For Flatpak:
+
+    flatpak list | grep mpv
+
+Check the File System: You can also search for mpv binaries across your system:
+
+which mpv
+
+or
+
+    whereis mpv
+
+Let me know what you find!
