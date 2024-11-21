@@ -1,56 +1,97 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+# Debug helper: Print a message with prefix
+log() {
+ # Comment the echo line when you don't need debugging
+    # echo "[DEBUG] $1"
+    :
+}
+
+# Flags for input behavior
+skip_input=false
+skip_restore=false
+
+# Parse script arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --skip-input)
+            skip_input=true
+            shift
+            ;;
+        --skip-restore)
+            skip_restore=true
+            shift
+            ;;
+        *)
+            log "Unknown argument: $1"
+            shift
+            ;;
+    esac
+done
+
+# Step 1: Check if we are already in a tmux session
+if [[ -n $TMUX ]]; then
+    log "Already inside a tmux session: $(tmux display-message -p '#S')"
+    exit 0
+fi
+
+# Step 2: Skip restore if requested, otherwise handle session restoration
+if ! $skip_restore; then
+    # Check for current tmux sessions
+    last_session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | tail -n 1)
+
+    if [[ -n $last_session ]]; then
+        log "Attaching to last session: $last_session"
+        tmux attach-session -t "$last_session"
+        exit 0
+    fi
+
+    # Attempt to restore if no session is found
+    log "No last session found. Attempting to resurrect..."
+    tmux-resurrect restore
+
+    # Recheck for sessions after resurrection
+    last_session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | tail -n 1)
+    if [[ -n $last_session ]]; then
+        log "Attaching to resurrected session: $last_session"
+        tmux attach-session -t "$last_session"
+        exit 0
+    fi
 else
-    selected=$(find ~/ ~/.config ~/Documents ~/OneDrive ~/Coding ~/Coding/Projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    log "Skipping session restoration as requested."
+fi
+
+# Step 3: Handle input only if input is not skipped
+if ! $skip_input; then
+    log "Handling input..."
+    selected=$(find ~/ ~/.config ~/Documents ~/OneDrive ~/Coding ~/Coding/Projects -mindepth 1 -maxdepth 2 -type d | fzf)
+else
+    log "Skipping input handling as requested."
+    selected=""
 fi
 
 if [[ -z $selected ]]; then
+    log "No directory selected. Exiting."
     exit 0
 fi
 
+# Step 4: Prepare the session name
 selected_name=$(basename "$selected" | tr . _)
+log "Selected session name: $selected_name"
+
+# Step 5: Start a new session or attach to an existing one
 tmux_running=$(pgrep tmux)
 
-# Check if tmux is running
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    # Create a new session if tmux is not running at all
-    tmux new-session -s $selected_name -c $selected
+if [[ -z $tmux_running ]]; then
+    log "No tmux server running. Starting a new session."
+    tmux new-session -s "$selected_name" -c "$selected"
     exit 0
 fi
 
-# Check if last session exists
-last_session=$(tmux list-sessions -F "#{session_name}" 2> /dev/null | tail -n 1)
-
-if [[ -z $last_session ]]; then
-    # Try to resurrect sessions if none exist
-    echo "No last session found. Attempting to resurrect..."
-    tmux-resurrect restore
-
-    # Recheck after resurrection if any sessions now exist
-    last_session=$(tmux list-sessions -F "#{session_name}" 2> /dev/null | tail -n 1)
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+    log "Session $selected_name does not exist. Creating it."
+    tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-# If we still don't have any sessions after resurrection, create a new one
-if [[ -z $last_session ]]; then
-    echo "No sessions available, creating a new session."
-    tmux new-session -s $selected_name -c $selected
-    exit 0
-fi
-
-# Check if the selected session exists
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    # Create a new detached session if selected session doesn't exist
-    tmux new-session -ds $selected_name -c $selected
-fi
-
-# If inside tmux, switch to selected or last session, otherwise attach
-if [[ -z $TMUX ]]; then
-    echo "Attaching to session: $selected_name or $last_session"
-    tmux attach-session -t $selected_name || tmux attach-session -t $last_session
-else
-    echo "Switching to session: $selected_name"
-    tmux switch-client -t $selected_name || tmux switch-client -t $last_session
-fi
-
+log "Attaching to session: $selected_name"
+tmux attach-session -t "$selected_name"
