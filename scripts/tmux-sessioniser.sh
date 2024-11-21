@@ -7,6 +7,12 @@ log() {
     :
 }
 
+# Default directory if no input is provided
+default_dir=~/
+
+# Timeout duration for fzf (in seconds)
+fzf_timeout=3
+
 # Flags for input behavior
 skip_input=false
 skip_restore=false
@@ -63,15 +69,51 @@ fi
 
 # Step 3: Handle input only if input is not skipped
 if ! $skip_input; then
-    log "Handling input..."
-    selected=$(find ~/ ~/.config ~/Documents ~/OneDrive ~/Coding ~/Coding/Projects -mindepth 1 -maxdepth 2 -type d | fzf)
+    log "Handling input with a timeout of $fzf_timeout seconds..."
+
+    # Run fzf in the background
+    find ~/ ~/.config ~/Documents ~/OneDrive ~/Coding ~/Coding/Projects -mindepth 1 -maxdepth 2 -type d | fzf > /tmp/fzf_selection &
+
+    # Wait for selection or timeout
+    fzf_pid=$!
+    for ((i = 0; i < fzf_timeout; i++)); do
+        if ! kill -0 $fzf_pid 2>/dev/null; then
+            # If fzf has exited, break out of the loop
+            break
+        fi
+        sleep 1
+    done
+
+    # Kill fzf if still running after the timeout
+    if kill -0 $fzf_pid 2>/dev/null; then
+        kill $fzf_pid
+        log "No input provided within $fzf_timeout seconds. Defaulting to $default_dir."
+        selected=$default_dir
+    else
+        # Read the selection from the temporary file
+        selected=$(< /tmp/fzf_selection)
+    fi
+
+    # Clean up temporary file
+    rm -f /tmp/fzf_selection
 else
     log "Skipping input handling as requested."
     selected=""
 fi
 
+# Step 3.5: Handle cases where no directory was selected
 if [[ -z $selected ]]; then
-    log "No directory selected. Exiting."
+    log "No directory selected. Attaching to the last session or creating a default session."
+    last_session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | head -n 1)
+
+    if [[ -n $last_session ]]; then
+        log "Attaching to the last session: $last_session"
+        tmux attach-session -t "$last_session"
+    else
+        default_session_name=$(basename "$default_dir" | tr . _)
+        log "No existing sessions found. Creating a new session: $default_session_name"
+        tmux new-session -s "$default_session_name" -c "$default_dir"
+    fi
     exit 0
 fi
 
