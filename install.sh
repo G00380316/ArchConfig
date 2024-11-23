@@ -135,6 +135,10 @@ sudo pacman -S --noconfirm xfdesktop
 xfdesktop --load
 sudo pacman -R --noconfirm dolphin
 
+# Laptop Utility
+sudo pacman -S --noconfirm tlp
+sudo systemctl enable --now tlp
+
 # Internet configuration
 echo "Installing Internet Modules"
 # This is for Iphones(Ifuse is the module that mounts ifuse /path/to/mount/point)
