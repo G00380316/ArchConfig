@@ -222,6 +222,9 @@ sudo pacman -S --noconfirm wl-clipboard
 # To Screen-Capture Obs
 sudo pacman -S --noconfirm ffmpeg
 
+# Simple Drag and drop video player
+sudo pacman -S --noconfirm mpv
+
 # Nvidia Setup
 sudo pacman -S --noconfirm nvidia nvidia-utils egl-wayland nvidia-settings wayland-utils vulkan-tools
 
