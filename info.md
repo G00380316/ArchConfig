@@ -1,7 +1,7 @@
-# This is a document for useful information that I am likely to forget about array of things 
+# This is a document for useful information that I am likely to forget about array of things
 
 
-- **Sync and Update mirror 
+- **Sync and Update mirror
 
 sudo pacman -Syy
 sudo pacman -S reflector
@@ -140,3 +140,49 @@ sudo pacman -S mesa-utils
 After installing the package, you can run the __NV_PRIME_RENDER_OFFLOAD=1 glxinfo | grep "OpenGL renderer" command again to check which GPU is being used for rendering.
 
 Let me know if you need further assistance!
+
+## Running a Script without Sudo
+
+To run a script with sudo without requiring a password, you can configure sudoers to grant specific permissions for your user or group. Here's how:
+Step 1: Edit the Sudoers File
+
+Open the sudoers file using visudo:
+
+sudo visudo
+
+This ensures that the file is edited safely and prevents syntax errors that could lock you out.
+Step 2: Add a Rule for Your Script
+
+Add the following line to the sudoers file, replacing username with your actual username and script_path with the absolute path to your script:
+
+username ALL=(ALL) NOPASSWD: /path/to/your/script.sh
+
+For example:
+
+enoch ALL=(ALL) NOPASSWD: /home/enoch/scripts/tmux-sessioniser.sh
+
+Step 3: Grant Permissions to Specific Commands
+
+If the script uses a specific command (e.g., libinput), you can allow just that command instead of the whole script. For example:
+
+username ALL=(ALL) NOPASSWD: /usr/bin/libinput
+
+Step 4: Test the Configuration
+
+Run the script or command with sudo to verify it works without a password:
+
+sudo /path/to/your/script.sh
+
+If the script still asks for a password, check:
+
+    That the path in the sudoers file matches the script's exact path.
+    The permissions of the script itself are executable (chmod +x /path/to/your/script.sh).
+
+Advanced: Run Without Explicit sudo in the Script
+
+If you want the script to always execute commands with sudo seamlessly:
+
+    Modify the script to call the specific command with sudo (e.g., sudo libinput).
+    Use the sudoers rule for that command.
+
+Let me know if you run into issues!
