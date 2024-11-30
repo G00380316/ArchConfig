@@ -228,6 +228,12 @@ sudo pacman -S --noconfirm mpv
 # Nvidia Setup
 sudo pacman -S --noconfirm nvidia nvidia-utils egl-wayland nvidia-settings wayland-utils vulkan-tools
 
+# Additional Nvidia setup for power saving settings 
+
+#nvidia-smi
+#sudo pacman -S --noconfirm nvidia-prime mesa-utils
+#__NV_PRIME_RENDER_OFFLOAD=1 glxinfo | grep "OpenGL renderer"
+
 # This package provides integration for Wayland applications to access desktop services.
 sudo pacman -S --noconfirm xdg-desktop-portal-wlr
 
