@@ -127,6 +127,10 @@ sudo pacman -S --noconfirm freetype2 harfbuzz cairo pango wayland libxkbcommon
 # Build-time dependencies
 sudo pacman -S --noconfirm meson scdoc wayland-protocols
 
+# Disk Utility 
+
+sudo pacman -S --noconfirm gdisk ntfs-3g dosfstools
+
 # File-Manager 
 sudo pacman -S --noconfirm thunar
 xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
