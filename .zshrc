@@ -206,5 +206,19 @@ export PATH="$HOME/.config/waybar/waybar-module-pomodoro/target/release:$PATH"
 export PATH="/home/enoch/Documents/Applications/Sideloader/Working Binaries:$PATH"
 alias sideloader='sideloader-cli-x86_64-linux-gnu'
 
+# Flutter
+export PATH="$PATH:/opt/flutter/bin"
+export PATH=$PATH:/sbin
+export CHROME_EXECUTABLE=$(which google-chrome-stable)
+export ANDROID_SDK_ROOT="/opt/android-sdk"
+export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin"
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/enoch/.dart-cli-completion/zsh-config.zsh ]] && . /home/enoch/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+

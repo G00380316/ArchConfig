@@ -221,3 +221,61 @@ or
     whereis mpv
 
 Let me know what you find!
+
+cmake fix 
+
+The output indicates you already have `libjsoncpp.so.26`, but `cmake` still complains about it. This could mean the linker cache is outdated or there's an issue with `cmake` specifically. Let's fix this systematically:
+
+---
+
+### **1. Verify `libjsoncpp.so.26`**
+Run:
+```bash
+ls -l /usr/lib/libjsoncpp.so.26
+```
+This should confirm that `libjsoncpp.so.26` exists and points to the correct file (e.g., `libjsoncpp.so.1.9.5` or similar). If it doesn’t, recreate the link:
+```bash
+sudo ln -sf /usr/lib/libjsoncpp.so /usr/lib/libjsoncpp.so.26
+```
+
+---
+
+### **2. Update the Dynamic Linker Cache**
+Run:
+```bash
+sudo ldconfig
+```
+This updates the system's library cache.
+
+---
+
+### **3. Check `cmake` Dependencies**
+Run `ldd` to verify which libraries `cmake` is linking to:
+```bash
+ldd $(which cmake)
+```
+Look for `libjsoncpp.so.26` in the output. If it shows **"not found"**, the linker cache is likely still an issue.
+
+---
+
+### **4. Reinstall `cmake`**
+If issues persist, reinstall `cmake` to ensure compatibility with the current libraries:
+```bash
+sudo pacman -S cmake
+```
+
+---
+
+### **5. Test Again**
+Run:
+```bash
+cmake --version
+```
+
+---
+
+If this still fails, share the output of:
+```bash
+ldd $(which cmake)
+``` 
+This will help diagnose unresolved dependencies.

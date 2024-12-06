@@ -117,6 +117,22 @@ sudo pacman -Syu --noconfirm
 # Development Tools
 echo "Installing basic development tools..."
 sudo pacman -S --noconfirm base-devel curl git github-cli wget lazygit gcc jdk-openjdk ruby
+
+# Flutter Install
+git clone https://github.com/flutter/flutter.git -b stable
+sudo mv flutter /opt/flutter
+
+# Some dependencies
+sudo pacman -S --noconfirm cmake
+# To be completely honest most things surrounding the installation of android
+# tools for flutter can be done through android Studio just navigate to the
+# settings and seach for 'Android SDK'
+
+yay -S --noconfirm android-studio
+# yay -S --noconfirm android-sdk android-ndk
+
+flutter doctor
+
 # Install PHP and Lua
 echo "Installing PHP and Lua..."
 sudo pacman -S --noconfirm php lua
@@ -127,11 +143,11 @@ sudo pacman -S --noconfirm freetype2 harfbuzz cairo pango wayland libxkbcommon
 # Build-time dependencies
 sudo pacman -S --noconfirm meson scdoc wayland-protocols
 
-# Disk Utility 
+# Disk Utility
 
 sudo pacman -S --noconfirm gdisk ntfs-3g dosfstools
 
-# File-Manager 
+# File-Manager
 sudo pacman -S --noconfirm thunar
 xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
 sudo pacman -S --noconfirm  thunar-archive-plugin thunar-media-tags-plugin
@@ -142,6 +158,7 @@ sudo pacman -R --noconfirm dolphin
 # Laptop Utility
 sudo pacman -S --noconfirm tlp
 sudo systemctl enable --now tlp
+sudo pacman -S --noconfirm brightnessctl
 
 # Internet configuration
 echo "Installing Internet Modules"
@@ -232,7 +249,7 @@ sudo pacman -S --noconfirm mpv
 # Nvidia Setup
 sudo pacman -S --noconfirm nvidia nvidia-utils egl-wayland nvidia-settings wayland-utils vulkan-tools
 
-# Additional Nvidia setup for power saving settings 
+# Additional Nvidia setup for power saving settings
 
 #nvidia-smi
 #sudo pacman -S --noconfirm nvidia-prime mesa-utils
