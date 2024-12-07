@@ -81,6 +81,8 @@ alias t='tmux'
 alias s='source'
 alias lg='lazygit'
 alias doc='~/.config/scripts/cht.sh'
+alias i='~/.config/scripts/cht.sh'
+
 
 # Add in snippets
 zinit snippet OMZP::git

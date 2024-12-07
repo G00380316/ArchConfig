@@ -7,7 +7,7 @@ default_dir=~/
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/.config ~/Documents ~/OneDrive ~/Coding ~/Coding/Projects -mindepth 1 -maxdepth 3 -type d | sed 's|^/home/enoch/||' | fzf)
+    selected=$(find ~/ ~/Documents ~/OneDrive ~/Coding ~/Coding/Projects -mindepth 1 -maxdepth 3 -type d | sed 's|^/home/enoch/||' | fzf)
 fi
 
 if [[ -z $selected ]]; then
