@@ -291,6 +291,9 @@ flatpak install flatseal -y
 
 # Extras
 
+# Torrent 
+sudo pacman -S --noconfirm qbittorrent
+
 # Youtube Video downloader
 sudo pacman -S --noconfirm yt-dlp
 
