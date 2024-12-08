@@ -272,7 +272,7 @@ flatpak install vesktop -y
 flatpak install dbgate -y
 flatpak install obsidian -y
 flatpak install blanket -y
-flatpak install flathub com.github.KRTirtho.Spotube -y
+#flatpak install flathub com.github.KRTirtho.Spotube -y
 flatpak install flathub org.moneymanagerex.MMEX -y
 flatpak install flathub dev.bragefuglseth.Keypunch -y
 flatpak install flathub net.lugsole.bible_gui -y
@@ -291,7 +291,7 @@ flatpak install flatseal -y
 
 # Extras
 
-# Torrent 
+# Torrent
 sudo pacman -S --noconfirm qbittorrent
 
 # Youtube Video downloader
