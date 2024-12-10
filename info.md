@@ -276,3 +276,28 @@ The kernel headers are a set of files required to compile kernel modules (such a
 For example, if you are running kernel version 6.12.1-arch1-1 and the headers installed are for 6.10.3-arch1-2, the module will likely not build correctly because the source files in the headers may be different.
 
 To avoid these issues, it's crucial to ensure that both the kernel version and the headers are the same.
+
+## Setting up swap file for Hiberantion (Archlinux btrfs)
+
+1. Btrfs-Specific Swap Configuration
+
+Btrfs swap files must be physically contiguous. Regular methods like fallocate or chattr +C might not guarantee this.
+Recreate the Swap File Using dd:
+
+    Remove the Current Swap File:
+
+sudo swapoff -a
+sudo rm /swapfile
+
+To create and initialise a Swapfile size of 32GB
+
+sudo truncate -s 0 swapfile
+sudo chattr +C swapfile
+sudo fallocate -l 32G swapfile
+sudo chmod 0600 swapfile
+sudo mkswap swapfile
+sudo swapon swapfile
+
+test by using these commands 
+
+systemctl sleep
