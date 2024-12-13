@@ -277,7 +277,7 @@ flatpak install flathub org.moneymanagerex.MMEX -y
 flatpak install flathub dev.bragefuglseth.Keypunch -y
 flatpak install flathub net.lugsole.bible_gui -y
 flatpak install flathub com.usebruno.Bruno -y
-flatpak install flathub com.usebottles.bottles -y
+#flatpak install flathub com.usebottles.bottles -y
 flatpak install flathub org.onlyoffice.desktopeditors -y
 # Still testing
 flatpak install flathub org.gnome.Boxes -y
