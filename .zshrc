@@ -82,7 +82,16 @@ alias s='source'
 alias lg='lazygit'
 alias doc='~/.config/scripts/cht.sh'
 alias i='~/.config/scripts/cht.sh'
-
+alias urar='unrar x'
+alias rar='rar a'
+alias gz='gunzip'
+alias bz2='bunzip2'
+alias tr='tar -xvf'
+alias trgz='tar -xzvf'
+alias trbz2='tar -xjvf'
+alias trxz='tar -xJvf'
+alias uxz='unxz'
+alias uzip='unzip'
 
 # Add in snippets
 zinit snippet OMZP::git
